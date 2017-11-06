@@ -45,8 +45,7 @@ import filterData from './filterData'
       const maxDate = new Date(2012,11,31);
 
       // initialize filter variables
-      var startDate = new Date(2011,0,1);
-      var endDate = new Date(2012,11,31);
+      var dateRange =[new Date(2011,0,1),new Date(2012,11,31)];
       var year2011Filter=true;
       var year2012Filter=true;
       var dayTypeWorkingFilter=true;
@@ -163,7 +162,7 @@ d3.csv('data/hour.csv', row1, data => {
   function render(){
     console.log("update filter and echo to console")
 
-    var dateRange = d3.extent(dataDay, d=>d.dteday);
+    //var dateRange = d3.extent(dataDay, d=>d.dteday);
     console.log('date range: '+ dateRange[0] +" to "+dateRange[1]);
 
     //set defaultOpacity
@@ -317,7 +316,7 @@ d3.csv('data/hour.csv', row1, data => {
 
     console.log("div7")
 
-    radialPlot(div8, {
+    radialPlot2(div8, {
       data:dataHourFiltered,
       hour:xValue5,
       yValue:yValue2,
@@ -336,13 +335,9 @@ d3.csv('data/hour.csv', row1, data => {
       xLabel:xLabel4,
       yLabel:"Users",
       colorValue:pointColor2,
-      pointSizeß:pointSize,
+      pointSize:pointSize,
       margin:margin,
-      onBrush: (dateRange) => {
-        console.log(dateRange)
-        console.log('TODO set filters, compute filtered data')
-        console.log('TODO re-render everything')
-      }
+      onBrush:onBrush
     });
 
 
@@ -356,7 +351,12 @@ d3.csv('data/hour.csv', row1, data => {
   //evenet listeners
   window.addEventListener('resize',render);
 
+//callback function for brush
 
+function onBrush(dateFromTo){
+    dateRange = dateFromTo;
+    console.log(dateRange)
+  };
 
 //event handler for bootstrap toggle switch UI elements
 $(function() {

@@ -21,10 +21,10 @@ export default function (data, props) {
 
   //reset filters
   data.forEach(d=>d.filterOpacity=unfilteredOpacity);
-
+  console.log(dateRange)
   //apply filters to data set based on state of toggle buttons on screen
   data.forEach(d =>{
-      //if(d.dteday<dateRange[0] || d.dteday>dateRange[1]) {d.filterOpacity=0.0}
+      if(d.dteday<dateRange[0] || d.dteday>dateRange[1]) {d.filterOpacity=0.0}
       if(d.yr==0 && year2011Filter==false) {d.filterOpacity=0.0}
       else if(d.yr==1 && year2012Filter==false) {d.filterOpacity=0.0}
       else if(d.workingday==1 && dayTypeWorkingFilter==false) {d.filterOpacity=0.0}

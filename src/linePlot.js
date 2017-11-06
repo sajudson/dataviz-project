@@ -63,6 +63,7 @@ export default function (div, props) {
       props.onBrush(dateRange);
   };
 
+
   var svgEnter = svg
     .enter()
     .append('svg');
@@ -159,6 +160,7 @@ b.merge(bEnter)
 //bExit
 //b
 //bEnter
+
 
 const curveFunction = d3.curveCatmullRom
 
