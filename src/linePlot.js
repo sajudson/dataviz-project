@@ -33,7 +33,9 @@ export default function (div, props) {
     yLabelRight,
     colorValue,
     pointSize,
-    margin
+    margin,
+    brushDateRange,
+    onBrush
   } = props;
 
   console.log(minDate, maxDate, d3.extent(data, xValue))
@@ -46,20 +48,14 @@ export default function (div, props) {
   const width = vizDiv.offsetWidth;
   const height = vizDiv.offsetHeight;
 
+ console.log(brushDateRange)
   var brush = d3.brushX()
-      .extent([[0, 0], [width, height]])
+      .extent([[0,0], [width, height]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
       .on("brush end", brushed);
 
   function brushed() {
       var s = d3.event.selection || xScale.range();
       var dateRange=s.map(xScale.invert, xScale);
-      //startDate and endDate appear to be undeclared in this function
-      //- even though they are desclared in index.js
-      // startDate = dateRange[0];
-      // endDate = dateRange[1];
-      //xScale.domain(s.map(xScale.invert, x2));
-      // console.log(startDate);
-      // console.log(endDate);
       props.onBrush(dateRange);
   };
 
@@ -155,11 +151,6 @@ b.merge(bEnter)
       .call(brush)
       .call(brush.move, xScale.range());
 
-//var bExit = b.remove();
-//
-//bExit
-//b
-//bEnter
 
 
 const curveFunction = d3.curveCatmullRom
@@ -175,10 +166,10 @@ const lineRegistered = d3.line()
       .enter()
       .append('path')
       .attr('class','linePath');
-  var userLinesExit = userLines.remove();
+
+userLines.exit().remove();
 
   //UPDATE old elements present (change class)
-userLinesExit
 
 userLines;
 

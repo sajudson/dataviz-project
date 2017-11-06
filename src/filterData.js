@@ -19,8 +19,8 @@ export default function (data, props) {
     //apply filters to data set based on state of toggle buttons on screen
   let filteredData = [];
   data.forEach(d =>{
-      //if(d.dteday<dateRange[0] || d.dteday>dateRange[1]) {d.filterOpacity=0.0}
-      if(d.yr==0 && year2011Filter==false) {return}
+      if(d.dteday<dateRange[0] || d.dteday>dateRange[1]) {return}
+      else if(d.yr==0 && year2011Filter==false) {return}
       else if(d.yr==1 && year2012Filter==false) {return}
       else if(d.workingday==1 && dayTypeWorkingFilter==false) {return}
       else if(d.workingday==0 && dayTypeNonWorkingFilter==false) {return}

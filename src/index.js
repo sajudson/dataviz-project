@@ -262,7 +262,7 @@ d3.csv('data/hour.csv', row1, data => {
 
     console.log("div3")
 
-    radialPlot2(div4, {
+    radialPlot(div4, {
       data:dataHourFiltered,
       hour:xValue5,
       yValue:yValue1,
@@ -316,7 +316,7 @@ d3.csv('data/hour.csv', row1, data => {
 
     console.log("div7")
 
-    radialPlot2(div8, {
+    radialPlot(div8, {
       data:dataHourFiltered,
       hour:xValue5,
       yValue:yValue2,
@@ -326,7 +326,7 @@ d3.csv('data/hour.csv', row1, data => {
     });
 
     console.log("div8")
-
+    console.log("calling line plot with date range:"+dateRange)
     linePlot(div9, {
       data:dataDay,
       xValue:xValue4,
@@ -337,6 +337,7 @@ d3.csv('data/hour.csv', row1, data => {
       colorValue:pointColor2,
       pointSize:pointSize,
       margin:margin,
+      brushDateRange:dateRange,
       onBrush:onBrush
     });
 
