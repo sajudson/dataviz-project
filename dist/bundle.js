@@ -82,7 +82,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
+console.log("start index.js");
      const div1 = "viz1";
      const div2 = "viz2";
      const div3 = "viz3";
@@ -123,6 +123,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       // initialize filter variables
       var dateRange =[new Date(2011,0,1),new Date(2012,11,31)];
+      var brushDateRange =[new Date(2011,0,1),new Date(2012,11,31)];
       var year2011Filter=true;
       var year2012Filter=true;
       var dayTypeWorkingFilter=true;
@@ -236,7 +237,7 @@ d3.csv('data/hour.csv', row1, data => {
       console.log(dataDay)
 
 //render function for all visualizations
-  function render(){
+  function render1(){
     console.log("update filter and echo to console")
 
     //var dateRange = d3.extent(dataDay, d=>d.dteday);
@@ -280,17 +281,17 @@ d3.csv('data/hour.csv', row1, data => {
       unfilteredOpacity
     });
 
-    const dataDayFiltered =Object(__WEBPACK_IMPORTED_MODULE_5__filterData__["a" /* default */])(dataDay,{
-      dateRange,
-      year2011Filter,
-      year2012Filter,
-      dayTypeWorkingFilter,
-      dayTypeNonWorkingFilter,
-      weatherSit1Filter,
-      weatherSit2Filter,
-      weatherSit3Filter,
-      unfilteredOpacity
-    });
+    // const dataDayFiltered =filterData(dataDay,{
+    //   dateRange,
+    //   year2011Filter,
+    //   year2012Filter,
+    //   dayTypeWorkingFilter,
+    //   dayTypeNonWorkingFilter,
+    //   weatherSit1Filter,
+    //   weatherSit2Filter,
+    //   weatherSit3Filter,
+    //   unfilteredOpacity
+    // });
 
 
     //first row of grids
@@ -403,6 +404,26 @@ d3.csv('data/hour.csv', row1, data => {
     });
 
     console.log("div8")
+    // console.log("calling line plot with date range:"+dateRange)
+    // linePlot(div9, {
+    //   data:dataDay,
+    //   xValue:xValue4,
+    //   yValue1:yValue1,
+    //   yValue2:yValue2,
+    //   xLabel:xLabel4,
+    //   yLabel:"Users",
+    //   colorValue:pointColor2,
+    //   pointSize:pointSize,
+    //   margin:margin,
+    //   brushDateRange:dateRange,
+    //   onBrush:onBrush
+    // });
+
+
+  };
+
+  function render2(){
+
     console.log("calling line plot with date range:"+dateRange)
     Object(__WEBPACK_IMPORTED_MODULE_1__linePlot__["a" /* default */])(div9, {
       data:dataDay,
@@ -422,18 +443,23 @@ d3.csv('data/hour.csv', row1, data => {
   };
 
 
+  function renderAll(){
+    render1();
+    render2();
+  };
 
 
-  render();
+  renderAll();
 
   //evenet listeners
-  window.addEventListener('resize',render);
+  window.addEventListener('resize',renderAll);
 
 //callback function for brush
 
 function onBrush(dateFromTo){
     dateRange = dateFromTo;
-    console.log(dateRange)
+    console.log(dateRange);
+    render1();
   };
 
 //event handler for bootstrap toggle switch UI elements
@@ -442,44 +468,44 @@ $(function() {
   	$('#year2011').change(function() {
       year2011Filter = $(this).prop('checked');
       console.log(year2011Filter);
-      render()
+      render1()
     });
 
     $('#year2012').change(function() {
       year2012Filter = $(this).prop('checked');
       console.log(year2012Filter);
-      render()
+      render1()
 		});
 
     $('#dayTypeWorking').change(function() {
       dayTypeWorkingFilter = $(this).prop('checked');
       console.log(dayTypeWorkingFilter);
-      render()
+      render1()
     });
 
 
     $('#dayTypeNonWorking').change(function() {
       dayTypeNonWorkingFilter = $(this).prop('checked');
       console.log(dayTypeNonWorkingFilter);
-      render()
+      render1()
     });
 
     $('#weatherSit1').change(function() {
       weatherSit1Filter = $(this).prop('checked');
       console.log(weatherSit1Filter);
-      render()
+      render1()
     });
 
      $('#weatherSit2').change(function() {
       weatherSit2Filter = $(this).prop('checked') ;
       console.log(weatherSit2Filter);
-      render()
+      render1()
     });
 
       $('#weatherSit3').change(function() {
       weatherSit3Filter = $(this).prop('checked');
       console.log(weatherSit1Filter);
-      render()
+      render1()
     });
 });
 });
@@ -653,7 +679,7 @@ const colorLegend = d3.legendColor()
 
 "use strict";
 
-const xScale = d3.scaleLinear();
+const xScale = d3.scaleTime();
 const yScale = d3.scaleLinear();
 const minDate = new Date(2011,0,1)
 const maxDate = new Date(2012,11,31)
@@ -702,10 +728,21 @@ const yAxis = d3.axisLeft()
   const width = vizDiv.offsetWidth;
   const height = vizDiv.offsetHeight;
 
- console.log(brushDateRange)
+
+//various unsuccesful attempts to get brush to stay in position between redraws
+ //  console.log(brushDateRange)
+ // console.log(xScale(brushDateRange[0]),xScale(brushDateRange[1]))
+ // console.log(xScale.invert(brushDateRange[0]),xScale.invert(brushDateRange[1]))
+
+  //var deltaBrushRange = brushDateRange[1]-brushDateRange[0];
+  // var brush = d3.brushX()
+  //     .extent([[xScale(brushDateRange[0]),0], [deltaBrushRange, height]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
+  //     .on("brush end", brushed);
+
   var brush = d3.brushX()
       .extent([[0,0], [width, height]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
       .on("brush end", brushed);
+
 
   function brushed() {
       var s = d3.event.selection || xScale.range();

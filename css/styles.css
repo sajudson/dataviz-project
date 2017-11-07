@@ -30,6 +30,7 @@ stroke:  LightGrey;
 }
 
 .axis :last-of-type circle {
+  fill: none;
   stroke: #333;
   stroke-dasharray: none;
 }

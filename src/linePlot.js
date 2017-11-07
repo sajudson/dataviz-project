@@ -1,5 +1,5 @@
 
-const xScale = d3.scaleLinear();
+const xScale = d3.scaleTime();
 const yScale = d3.scaleLinear();
 const minDate = new Date(2011,0,1)
 const maxDate = new Date(2012,11,31)
@@ -48,10 +48,21 @@ export default function (div, props) {
   const width = vizDiv.offsetWidth;
   const height = vizDiv.offsetHeight;
 
- console.log(brushDateRange)
+
+//various unsuccesful attempts to get brush to stay in position between redraws
+ //  console.log(brushDateRange)
+ // console.log(xScale(brushDateRange[0]),xScale(brushDateRange[1]))
+ // console.log(xScale.invert(brushDateRange[0]),xScale.invert(brushDateRange[1]))
+
+  //var deltaBrushRange = brushDateRange[1]-brushDateRange[0];
+  // var brush = d3.brushX()
+  //     .extent([[xScale(brushDateRange[0]),0], [deltaBrushRange, height]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
+  //     .on("brush end", brushed);
+
   var brush = d3.brushX()
       .extent([[0,0], [width, height]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
       .on("brush end", brushed);
+
 
   function brushed() {
       var s = d3.event.selection || xScale.range();
