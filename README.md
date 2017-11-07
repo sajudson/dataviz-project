@@ -49,15 +49,31 @@ The dataset file can be found [here](https://archive.ics.uci.edu/ml/machine-lear
 
 # Prototypes
 
+## Prototype Mockup (from final proposal)
+![prototype mock up 2](https://user-images.githubusercontent.com/13242061/32497733-8d81e0ae-c39b-11e7-8ee2-e58a852dfaca.png)
+
+## Sample Charts (prototypes)
+
+<img width="611" alt="scatter - casual - humidity" src="https://user-images.githubusercontent.com/13242061/32497351-4a1bc010-c39a-11e7-896c-6e88ed302085.png">
+<img width="611" alt="scatter - casual - temp" src="https://user-images.githubusercontent.com/13242061/32497352-4a315b64-c39a-11e7-82d9-a45a5d2b1c97.png">
+<img width="611" alt="scatter - casual - windspeed" src="https://user-images.githubusercontent.com/13242061/32497353-4a44eaa8-c39a-11e7-8f6d-500553945904.png">
+
+<img width="611" alt="scatter - registered - humidty" src="https://user-images.githubusercontent.com/13242061/32497354-4a593f44-c39a-11e7-9a95-02ede7f62d5b.png">
+<img width="611" alt="scatter - registered - temp" src="https://user-images.githubusercontent.com/13242061/32497356-4a70634a-c39a-11e7-8b9b-e84a9ae8dee8.png">
+<img width="611" alt="scatter - registered - windspeed" src="https://user-images.githubusercontent.com/13242061/32497357-4a82a55a-c39a-11e7-911f-a235573cb9dd.png">
+
+
 # The Visualizations
 
+## Radial Time series
+<img width="564" alt="radial time series with tick marks and x labels" src="https://user-images.githubusercontent.com/13242061/32497330-38f7b74e-c39a-11e7-94a1-2abb27847634.png">
   - Radial Time Series
     - Data - Users vs Time of day
     - Encoding
       - User as line with time as angular position
       - Color
     - Interpretation -
-
+## Scatter Plots
   - Scatter Plots
     - Data - users (y-axis) vs temp, humidity and windspeed (x-axis)
     - Aggregates hourly data used in radial time series plot into daily averages
