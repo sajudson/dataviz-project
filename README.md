@@ -2,43 +2,36 @@
 Live Version (hosted on Github Pages):https://sajudson.github.io/dataviz-project/
 
 # Introduction
-This is an exploratory visualization looking at the time of day use patterns and the relationship between the number of users and quantitative weather attributes (temperature, humidity and windspeed).
-
-- explore the factors that influence the number of users of a bike share system
-- time of use patterns
-- relationships between users and quantitate attributes
-- influence of categorical attributes
-
+This is an exploratory visualization for a bike share system that is intended to assist in determine the factors that influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
 
 # The Data
 ## Washington DC Bike Sharing Data Set
 
-This data set contains the number of bike share system users (casual and registered) for each day (and hour) for two years (Jan 2011 - Dec 2012), as well as the day type (holiday, workingday), weather situation, temperature and humidity, apparent temperature and windspeed.
+This data set covers a two year period between Jan 2011 and Dec 2012, with the following parameters:
 
 - Parameters in data set
   - Date and Time:
-    - year, month, day, hour,
-    - derived: season, working day, holiday, day of week
+    - year, month, day, hour. (continuous/temporal)[1]
+    - derived: season, working day, holiday, day of week (categoricaL)
   - Weather:
-    - temperature, humidity, weather situation
-    -derived:  apparent temperature
-  - Users:
-    - casual, registered,
-    derived: total user count
+    - temperature (continuous), humidity (continuous), weather situation (categoricaL)
+    -derived:  apparent temperature (continuous)
+  - System users:
+    - casual, registered. (continuous)
+    derived: total user count (continuous)
 
-- Processing
-  - Aggregate into daily intervals
 
+  [1] raw temporal date and time variables were continuous. Year and month also functioned as categorical attributes because of the limited number of unique values (2 and 12 respectively). The derived values of season, working day, holiday and day of week were categorical attributes
+
+# Data Processing
+Hourly data was imported then aggregated into daily intervals, using mean values for all parameters except casual, registered, and total users (which were summed), and the weather situation, which used the maximum value observed for the day). All of the categorical values in the data set remained constant throughout a given day, except for weather situation. To maintain weather situation as a categorical attribute, the maximum value was used.
 
 This data is from [UCI Machine Learning Repository: Bike Sharing Data Set](https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset)
 
 The dataset file can be found [here](https://archive.ics.uci.edu/ml/machine-learning-databases/00275/Bike-Sharing-Dataset.zip) as a zip archive.
-
-
 [Daily Data Block Summary](https://bl.ocks.org/sajudson/d8d4909fa0512302a95b1e0982a07c0f)
 [Hourly Data Block Summary](https://bl.ocks.org/sajudson/3b64ad3a4e4e2c5f80898eebd40646ca)
 
-video_outline.md
 
 
 # The Questions
@@ -54,15 +47,20 @@ video_outline.md
   - Look at differences in factors influencing casual and registered users using multiple views grouped type of user
   - Use a one dimensional brush on the overview line chart to select specific time ranges shown in the radial and scatter plots
 
+# Prototypes
+
 # The Visualizations
+
   - Radial Time Series
     - Data - Users vs Time of day
     - Encoding
       - User as line with time as angular position
       - Color
     - Interpretation -
-  - Scatter Plot
+
+  - Scatter Plots
     - Data - users (y-axis) vs temp, humidity and windspeed (x-axis)
+    - Aggregates hourly data used in radial time series plot into daily averages
     - Encoding
         - points shown as circles
         - colors
@@ -73,6 +71,7 @@ video_outline.md
       - users as line
       - color
     - Interpretation
+
 # Interactions
   - Panning & zooming from line chart overview
   - Filtering by categorical variables
@@ -80,6 +79,22 @@ video_outline.md
 # Idioms Used
   - Multiple Views
   - Linked Navigation
+
+# Known bugs
+  - Radial time series plot tick and text axis do not display properly, and time axis needs to be calibrated
+  - The toggles will allow all of the data to be filtered
+  - The brush on the line chart overview and corresponding data filters are reset on window resizing (toggle filter settings persist on resize).
+  - Line chart y ticks are not always redrawn correctly (missing for part of the graph) when window is maximized
+  - Delay redrawing the chart when window is resized
+  - Chart layouts do no work properly on smaller window sizes.
+  - Chart layouts retain 1:1  aspect ratio for scatter and radial line plots, leaving significant white space between the plots when the window is more significantly wider than it is tall.
+
+# Future Work and Enhancements
+  - Mapping colors to points and lines based on categorical attributes, such as weather situation, working day, holiday, or season.
+  - Add a second radial time series plot for weekly patterns
+  - Incorporate parallel axis plots in addition or in lieu of scatter plots
+  - Allow user to select the x attributes shown in the scatter plots   
+  - Multi level radial visualization to shown patterns over different time scales (e.g., annual, weekly, and daily)
 
 
 # Sources and Inspiration
@@ -90,7 +105,6 @@ This visualization draws inspiration and code from the following sources:
 
 <a href='http://bl.ocks.org/mbostock/'>mbostock</a>'s blocks, including:
 <li><a href='http://bl.ocks.org/mbostock/34f08d5e11952a80609169b7917d4172'>Brush & Zoom</a>
-
 <li>[Polar plot with radial and angular tick marks](https://bl.ocks.org/mbostock/4583749)
 
 
@@ -106,6 +120,7 @@ It also draws on my previous work shown on [bl.ocks.org](http://bl.ocks.org/saju
 ## Other sources and references:
 
 <li>[d3 v4 Curve Functions Examples](https://bl.ocks.org/d3noob/ced1b9b18bd8192d2c898884033b5529)
+# The Visualizations
 
 
 

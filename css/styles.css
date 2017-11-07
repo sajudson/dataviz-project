@@ -48,12 +48,7 @@ stroke:  LightGrey;
 }
 
 
-	.line_casual {
-	fill: none;
-  stroke: darkblue;
-  stroke-width: 2px;
-	clip-path: url(#clip)
-  }
+
   .line_registered {
 	fill: none;
   stroke: green;
@@ -66,12 +61,7 @@ stroke:  LightGrey;
   stroke-width: 1px;
 	clip-path: url(#clip)
   }
-	.line_temp {
-	fill: none;
-  stroke: orange;
-  stroke-width: 1px;
-  clip-path: url(#clip)
-  }
+	
 
   .zoom {
   cursor: move;
