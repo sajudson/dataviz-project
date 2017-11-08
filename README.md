@@ -5,7 +5,7 @@ Live Version (hosted on Github Pages):https://sajudson.github.io/dataviz-project
 
 This is an exploratory visualization for a bike share system that is intended to assist in determine the factors that influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
 
-<img width="1070" alt="final vis screenshot - draft" src="https://user-images.githubusercontent.com/13242061/32503344-fd554e16-c3aa-11e7-9e41-b7a4f1fa91a7.png">
+
 
 # The Data
 ## Washington DC Bike Sharing Data Set
@@ -40,7 +40,9 @@ The dataset file can be found [here](https://archive.ics.uci.edu/ml/machine-lear
 
 
 
-# The Questions & Tasks
+# The Design Intent
+
+## The Questions
 This visualization is intended to help answer the following questions:
   - What factors influence the number of casual and registered
  users of the bike share system?
@@ -48,6 +50,7 @@ This visualization is intended to help answer the following questions:
   - How much did ridership increase from 2011 to 2012, accounting for seasonality and weather?
   - Where is growth in ridership coming - casual or registered users?
 
+## Tasks
 The visualization was specifically designed to perform the following tasks:
   - Show time based patterns using radial and rectilinear line charts
   - Show relationships between continuous variables and the number of users using scatter plots
@@ -56,96 +59,124 @@ The visualization was specifically designed to perform the following tasks:
   - Examine the changes in the patterns and relationships over time using one dimensional brush on the overview line chart to pan and filter the data shown in the other charts.
   - Focus on patterns and relationships for specific periods of time, using the brush to control the specific time ranges (i.e., start and end date) shown in the radial and scatter plots
 
-Given the tasks, encoding and design idioms used, the visualization is intended to be used with a relatively large display (i.e., desktop or laptop). Given the intended use (exploratory data analysis), no attempt was made to optimize the user experience for mobile device users, at this time.
-
-# The Prototypes
-
-## Prototype Mockup (from final proposal)
-Prototypes were created for each of the visualizations, and a mockup of the  prototype
-![prototype mock up](https://user-images.githubusercontent.com/13242061/32497733-8d81e0ae-c39b-11e7-8ee2-e58a852dfaca.png)
-
-## Sample Charts (prototypes)
-
-## Radial Time Series - Users by Time of Day
-<img width="564" alt="radial time series with tick marks and x labels" src="https://user-images.githubusercontent.com/13242061/32497330-38f7b74e-c39a-11e7-94a1-2abb27847634.png">
-## Scatter Plot - Users vs Continuous Weather Parameters
-<img width="611" alt="scatter - casual - temp" src="https://user-images.githubusercontent.com/13242061/32497352-4a315b64-c39a-11e7-82d9-a45a5d2b1c97.png">
 
 
-# The Visualizations
-The final visualization incorporates 9 different visualizations - an overview chart with 8 detailed plots.  The plots are arranged in three rows, with the detail charts for registered users and casual users in the first and second rows, and the overview chart in the third row. A group of toggle switch UI elements that control the filters for year, day type and weather situation appear in a row above the chart, and a one dimensional brush appears the third row as part of the overview chart respectively.
-
-The detailed charts in the first two groupings consist of a radial time series plot showing users versus time of day, and three scatter plots showing the users per day as function of temperature, humidity and windspeed. The two groupings show casual and registered users, respectively.
-
-The final visualization is a line chart time series overview showing the total number of users per day by date over the two years of data in the dataset.
-## Radial Time series
-<img width="564" alt="radial time series with tick marks and x labels" src="https://user-images.githubusercontent.com/13242061/32497330-38f7b74e-c39a-11e7-94a1-2abb27847634.png">
-The radial time series plot shows the number of users by time of day, with users encoding as the radial distance from the center of the plot, and time encoding as the angle. color is used  distinguish between the type of users (green = registered, blue = casual). In the final version, separate plots were used for each type of user.
-
-The chart illustrates patterns
-
-## Scatter Plots
-<img width="730" alt="final vis scatterplot - unfiltered - draft" src="https://user-images.githubusercontent.com/13242061/32503343-fd3cd1ce-c3aa-11e7-8c35-65feff4bf77a.png">
-
-  - Scatter Plots
-    - Data - users (y-axis) vs temp, humidity and windspeed (x-axis)
-    - Aggregates hourly data used in radial time series plot into daily averages
-    - Encoding
-        - points shown as circles
-        - colors
-    - Interpretation
-
-## Line chart overview with brush
-
-The line chart time series overview shows the number of users per day by date over the two years of data in the dataset.
-
-Total number of daily users is encoded as vertical position and date is encoded as horizontal position. This is an overview graph, and since color is used in the other charts to distinguish between the type of users (casual or registered), the total number of users in the final version uses black to distinguish this from the other charts.
-
-### Prototype
-<img width="898" alt="rectilinear casual and registered user time series overview" src="https://user-images.githubusercontent.com/13242061/32530488-6182e68a-c40c-11e7-8b47-a5b216075c3c.png">
-
-The prototype shows the casual and registered users as well as apparent temperature. The final version shows only the total number of users. 
-
-### Final
-<img width="1034" alt="final vis screenshot - overview initial position- draft" src="https://user-images.githubusercontent.com/13242061/32503346-fdd27e86-c3aa-11e7-9d43-6d0d20893325.png">
-
-
-
-
-# Interactions
-The visualization uses two different and complementary visualization
-  - Panning & zooming from line chart overview
-  - Filtering by categorical variables
-
-# Idioms Used
-  The visualization makes use of two idioms in particular:
-  - Multiple Views
-  - Linked Navigation
+## The Idioms Used
+The visualization makes use of two specific idioms - Multiple Views and Linked Navigation.
 
 The eight detailed charts are multiple views used to show commonalities and differences in the patterns between casual and registered users in the 8. The charts corresponding to each user type are grouped horizontally, with charts showing the same parameters aligned vertically. This arrangement allows easy comparison between the causal and registered user patterns and relationships within working memory.
 
 The overview chart uses a brush to select specific date ranges, which, along with the toggle switch UI elements, configure the filters that control which data is visible in the 8 detailed charts. The brush and toggle switches operating together implement the linked navigation idiom.
 
-# Known bugs and limitations
-  - Radial time series plot tick and text axis do not display properly, and time axis needs to be calibrated.
-  - The toggles will allow all of the data to be filtered.
+## Tradeoffs
+Given the tasks, encoding and design idioms used, the visualization is intended to be used with a relatively large display (i.e., desktop or laptop). Given the intended use (exploratory data analysis), no attempt was made to optimize the user experience for mobile device users, at this time.
+
+# The Visualization
+## Layout
+The final visualization incorporates 9 different visualizations - an overview chart with 8 detailed charts.  The charts are arranged in three rows, with the detail charts for registered users and casual users in the first and second rows, and the overview chart in the third row.
+
+The detailed charts in the first two groupings consist of a radial time series plot showing users versus time of day, and three scatter plots showing the users per day as function of temperature, humidity and windspeed. The two groupings show casual and registered users, respectively.
+
+
+### Prototype
+The prototype illustrates the intended layout of the individual charts, their aspect ratios, as well as the use of color to distinguish between the different user types.
+
+![prototype mock up](https://user-images.githubusercontent.com/13242061/32497733-8d81e0ae-c39b-11e7-8ee2-e58a852dfaca.png)
+
+### Final
+
+The final version of the visualization, shown below, follows the same basic layout as the prototype, with the following additions:
+- The visualization title appears at the top of the page, and explanatory headings are added to the each row of charts,
+- A group of toggle switch UI elements to control the filters for year, day type and weather situation appear in a row above the charts, and
+- A one dimensional brush appears the third row as part of the overview chart respectively.
+
+
+<img width="1070" alt="final vis screenshot - draft" src="https://user-images.githubusercontent.com/13242061/32503344-fd554e16-c3aa-11e7-9e41-b7a4f1fa91a7.png">
+
+
+## Radial Time Series - Users vs Time of Day
+The radial time series plot shows the number of users by time of day, with users encoding as the radial distance from the center of the plot, and time encoding as the angle. Color is used  distinguish between the type of users (green = registered, blue = casual).
+
+
+### Prototype
+The prototype plot was revised after the prototype layout was completed, with the addition of time and user axis tick marks and tick text.
+<img width="564" alt="radial time series with tick marks and x labels" src="https://user-images.githubusercontent.com/13242061/32497330-38f7b74e-c39a-11e7-94a1-2abb27847634.png">
+
+
+### Final
+In the final version, separate plots were used for each type of user.
+
+PENDING
+
+## Scatter Plot - Users vs Continuous Weather Parameters
+The scatter plots show the relationship between the number of users and one of three continuous weather attributes. circular point marks represent specific days, with the number of users encoded as vertical spatial position and the value of the weather attribute encoded as horizontal spatial position.
+
+The data used for these plots is the total daily users and average value of the weather attribute, aggregated from the hourly dat used for the radial time series plot. The y axis for the registered and casual user charts is set based on the range of the users of each type, and is the same for all charts corresponding to each user type. The x axis is the same for charts using the same weather attribute but different user types.
+
+The scatter plots are used to look for potential casual relationships between weather and the number of users. Correlation (positive or negative) between the number of users and a specific weather attribute would show up as general trend updward or downward in the data. Low variation between the general trend and the individual points would suggest a high correlation, and high variance (i.e., more widely scattered points) would suggest a lower correlation.
+
+### Prototype
+<img width="611" alt="scatter - casual - temp" src="https://user-images.githubusercontent.com/13242061/32497352-4a315b64-c39a-11e7-82d9-a45a5d2b1c97.png">
+
+### Final
+The final version of the scatter plots is essentially unchanged from the prototype, with minor changes to point size and opacity.
+
+<img width="730" alt="final vis scatterplot - unfiltered - draft" src="https://user-images.githubusercontent.com/13242061/32503343-fd3cd1ce-c3aa-11e7-8c35-65feff4bf77a.png">
+
+
+
+## Line chart overview with brush
+The ninth chart is a time series line chart that serves as an overview or context chart. It shows the total number of users per day by date over the two years of data in the dataset.
+
+Total number of daily users is encoded as vertical position and date is encoded as horizontal position. This is an overview graph, and since color is used in the other charts to distinguish between the type of users (casual or registered), the total number of users in the final version uses black to distinguish this from the other charts.
+
+### Prototype
+The prototype shows a single scatter plot which is representative of all siz scatterplots.
+<img width="898" alt="rectilinear casual and registered user time series overview" src="https://user-images.githubusercontent.com/13242061/32530488-6182e68a-c40c-11e7-8b47-a5b216075c3c.png">
+
+The prototype shows the casual and registered users as well as apparent temperature on the line chart.
+
+### Final
+The final version  of the time series line chart (illustrated by the three chart sequence for registered users below) shows only the total number of users. This approach was chosen to make it easier to understand the overview chart, and because this information is not provided in any other chart.
+
+<img width="1034" alt="final vis screenshot - overview initial position- draft" src="https://user-images.githubusercontent.com/13242061/32503346-fdd27e86-c3aa-11e7-9d43-6d0d20893325.png">
+
+# The Interactions
+The visualization uses three different and complementary interactions:
+  - Filtering
+  - Data range selection
+  - Panning
+
+Filtering by categorical variables uses the  filter toggle switches at the top of page to select which data will be shown (toggle enable = green) and which will be hidden (toggle disabled = white). This enables the user to compare the impact of the these variables on the patterns and relationships shown in the detailed charts.
+
+The date range selection uses the brush in the overview chart - dragging and dropping the edges of the brush filters out the data that is outside of the brush.
+
+Once a date range has been selected, dragging any point inside the brush allows the user to change the starting date of the data displayed in the detailed charts while leaving the duration of the date range unchanged. This allows the user to pan throughout the entire data range and see how patterns change over time.  
+
+# Additional Information
+## Known bugs and limitations
+  - Radial time series plot tick and text axis do not display properly, and time axis needs to be calibrated ().
+  - The toggles will allow all of the data to be filtered (i.e, not shown) on the chart.
   - The brush on the line chart overview and corresponding data filters are reset on window resizing (toggle filter settings persist on resize).
-  - Line chart y ticks are not always redrawn correctly (missing for part of the graph) when window is maximized.
-  - Delays redrawing the visualizations when window is resized. The lag is noticeable but not excessive when running on a laptop or desktop, but appears to be a significant obstacle for mobile platforms.
-  - The visualization in its current form is intended to be view on a desktop or laptop screen, preferably at or close to full screen (i.e., as a dashboard). It may not display as intended during when viewed in a small window or on a mobile device. The size of the data set is also large enough that the  CPU intensive due to the size of the data set. The visualization is not The visualization is intended to be viewed on a laptop or d Chart layouts:
+  - Line chart y ticks are not always redrawn correctly (ticks may be missing on the right side of the chart) when window is maximized.
+  - Delays redrawing the visualizations when window is resized. The lag is noticeable but not excessive when running on a laptop or desktop, but may be an obstacle for mobile platforms.
+  - The visualization in its current form is intended to be view on a desktop or laptop screen, preferably at or close to full screen (i.e., as a dashboard). It may not display as intended during when viewed in a small window or on a mobile device. The following limitations exist:
     - Small window sizes can cause the charts to wrap onto a new line.
     - Chart layouts retain 1:1  aspect ratio for scatter and radial line plots, leaving significant white space between the plots when the window is more significantly wider than it is tall.
     - the font size used for tick labels does not vary with size, and tick marks may overlap at smaller scales
 
-# Future Work and Enhancements
+## Future Work and Enhancements
   - Mapping colors to points and lines based on categorical attributes, such as weather situation, working day, holiday, or season.
   - Add a second radial time series plot for weekly patterns
   - Incorporate parallel axis plots in addition or in lieu of scatter plots
   - Allow user to select the x attributes shown in the scatter plots   
   - Multi level radial visualization to shown patterns over different time scales (e.g., annual, weekly, and daily)
+  - Improve viewing in smaller windows and potentially mobile devices. Issues to be addressed include:
+    - scaling of elements, including tick text, axis labels, mark (i.e., line/=or point) size, mark opacity
+    - layout of chart (e.g., layout is  altered based on device viewport and/or physical size).
 
 
-# Sources and Inspiration
+## Sources and Inspiration
 This visualization draws inspiration and code from the following sources:
 <a href='http://bl.ocks.org/curran/'>curran</a>'s blocks:
 <li> <a href='http://bl.ocks.org/curran/ecb09f2605c7fbbadf0eeb75da5f0a6b'>Stylized Scatter Plot with Color Legend</a>
@@ -155,6 +186,7 @@ This visualization draws inspiration and code from the following sources:
 <li><a href='http://bl.ocks.org/mbostock/34f08d5e11952a80609169b7917d4172'>Brush & Zoom</a>
 <li>[Polar plot with radial and angular tick marks](https://bl.ocks.org/mbostock/4583749)
 
+<li>[d3noob's v4 Curve Functions Examples](https://bl.ocks.org/d3noob/ced1b9b18bd8192d2c898884033b5529)
 
 
 It also draws on my previous work shown on [bl.ocks.org](http://bl.ocks.org/sajudson/) including:
@@ -165,19 +197,18 @@ It also draws on my previous work shown on [bl.ocks.org](http://bl.ocks.org/saju
 <li>[Bike Share Users Radial Time Series - Hourly](https://bl.ocks.org/sajudson/4f7e657d7114022114ea602641874c8c/)
 <li>[Interaction 2](https://bl.ocks.org/sajudson/a0713fb9826aea45f15b207dfec9bcb4)
 
-## Other sources and references:
-
-<li>[d3 v4 Curve Functions Examples](https://bl.ocks.org/d3noob/ced1b9b18bd8192d2c898884033b5529)
 
 
 
 
-# Development and Deployment Notes (adapted from [UNHCR StreamGraph Explorer](https://github.com/unhcr/dataviz-streamgraph-explorer))
+## Development and Deployment Notes (adapted from [UNHCR StreamGraph Explorer](https://github.com/unhcr/dataviz-streamgraph-explorer))
 
 The project is built from a template project that uses Webpack and D3 provided by Curran Kelleher. The template was designed as a starting point for interactive data visualization projects that require JavaScript code to be organized across many files (as ES6 modules).
 
 Build the JavaScript bundle using WebPack, using this command:
+
     npm run build
+
 To see the page run on a local HTTP server at localhost:8080
 
     npm install -g http-server
