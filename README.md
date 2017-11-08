@@ -5,32 +5,28 @@ Live Version (hosted on Github Pages):https://sajudson.github.io/dataviz-project
 
 This is an exploratory visualization for a bike share system that is intended to assist in determine the factors that influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
 
-
-
 # The Data
 ## Washington DC Bike Sharing Data Set
 
 This data set covers a two year period between Jan 2011 and Dec 2012, and contains the following parameters:
   - Date and Time:
-    - Year, month, day, hour. (continuous/temporal)
-    - Derived attributes: season, working day, holiday, day of week (categoricaL)
-  - Weather:
-    - Temperature (continuous), humidity (continuous), weather situation (categoricaL)
+    - Year, month, day, hour. (continuous/temporal, may be treated as ordinal or categorical in some cases)
+    - Derived attributes: season (categorical), working day (categorical), holiday (categorical), day of week (ordinal).
+  - Weather (rescaled to [0,1])
+    - Temperature (continuous), humidity (continuous), weather situation (categorical)
     - Derived attributes:  apparent temperature (continuous)
   - System users:
     - Casual, registered, and total user counts (continuous).
 
+  Raw temporal date and time variables are continuous, but year and month can also function as categorical attributes because of the limited number of unique values (2 and 12 respectively). The derived temporal values of season, working day, holiday and day of week were categorical attributes.
 
-  Raw temporal date and time variables are continuous, but year and month can also function as categorical attributes because of the limited number of unique values (2 and 12 respectively). The derived values of season, working day, holiday and day of week were categorical attributes.
+  All categorical variables were mapped to integers in the original data set.
 
-  Weather data parameters are rescaled to range from  0 to 1
-
-  Derived data were created from other variablesand placed in to t
 ## Data Processing
 
 The dataset used from
 
-Hourly data was imported then aggregated into daily intervals, using mean values for all parameters except casual, registered, and total users (which were summed), and the weather situation, which used the maximum value observed for the day). All of the categorical values in the data set remained constant throughout a given day, except for weather situation. To maintain weather situation as a categorical attribute, the maximum value was used.
+Hourly data was imported then aggregated into daily intervals, using mean values for all parameters except casual, registered, and total users (which were summed), and the weather situation, which used the maximum value observed for the day). All of the categorical values in the data set remained constant during a given day, except for weather situation. To maintain weather situation as a categorical attribute, the maximum value was used.
 
 This data is from [UCI Machine Learning Repository: Bike Sharing Data Set](https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset)
 
@@ -68,8 +64,8 @@ The eight detailed charts are multiple views used to show commonalities and diff
 
 The overview chart uses a brush to select specific date ranges, which, along with the toggle switch UI elements, configure the filters that control which data is visible in the 8 detailed charts. The brush and toggle switches operating together implement the linked navigation idiom.
 
-## Tradeoffs
-Given the tasks, encoding and design idioms used, the visualization is intended to be used with a relatively large display (i.e., desktop or laptop). Given the intended use (exploratory data analysis), no attempt was made to optimize the user experience for mobile device users, at this time.
+## Design Tradeoffs
+Given the tasks, encoding and design idioms used, the visualization is intended to be used with a relatively large display (i.e., desktop or laptop). Given the intended use (exploratory data analysis), no attempt was made to optimize the user experience for mobile device users at this time.
 
 # The Visualization
 ## Layout
@@ -104,7 +100,7 @@ The prototype plot was revised after the prototype layout was completed, with th
 
 
 ### Final
-In the final version, separate plots were used for each type of user.
+In the final version, separate plots were used for each user type.
 
 PENDING
 
@@ -131,7 +127,7 @@ The ninth chart is a time series line chart that serves as an overview or contex
 Total number of daily users is encoded as vertical position and date is encoded as horizontal position. This is an overview graph, and since color is used in the other charts to distinguish between the type of users (casual or registered), the total number of users in the final version uses black to distinguish this from the other charts.
 
 ### Prototype
-The prototype shows a single scatter plot which is representative of all siz scatterplots.
+The prototype shows a single scatter plot which is representative of all six scatterplots.
 <img width="898" alt="rectilinear casual and registered user time series overview" src="https://user-images.githubusercontent.com/13242061/32530488-6182e68a-c40c-11e7-8b47-a5b216075c3c.png">
 
 The prototype shows the casual and registered users as well as apparent temperature on the line chart.
