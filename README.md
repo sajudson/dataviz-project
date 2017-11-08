@@ -105,11 +105,11 @@ In the final version, separate plots were used for each user type.
 PENDING
 
 ## Scatter Plot - Users vs Continuous Weather Parameters
-The scatter plots show the relationship between the number of users and one of three continuous weather attributes. circular point marks represent specific days, with the number of users encoded as vertical spatial position and the value of the weather attribute encoded as horizontal spatial position.
+The scatter plots show the relationship between the number of users and one of three continuous weather attributes. circular point marks represent specific days, with the number of users encoded as vertical spatial position and the value of the weather attribute encoded as horizontal spatial position. Reducing opacity is used to address occlusion of data points.
 
 The data used for these plots is the total daily users and average value of the weather attribute, aggregated from the hourly dat used for the radial time series plot. The y axis for the registered and casual user charts is set based on the range of the users of each type, and is the same for all charts corresponding to each user type. The x axis is the same for charts using the same weather attribute but different user types.
 
-The scatter plots are used to look for potential casual relationships between weather and the number of users. Correlation (positive or negative) between the number of users and a specific weather attribute would show up as general trend updward or downward in the data. Low variation between the general trend and the individual points would suggest a high correlation, and high variance (i.e., more widely scattered points) would suggest a lower correlation.
+The scatter plots are used to look for potential casual relationships between weather and the number of users. Correlation (positive or negative) between the number of users and a specific weather attribute would show up as general trend upward or downward in the data. Low variation between the general trend and the individual points would suggest a high correlation, and high variance (i.e., more widely scattered points) would suggest a lower correlation.
 
 ### Prototype
 <img width="611" alt="scatter - casual - temp" src="https://user-images.githubusercontent.com/13242061/32497352-4a315b64-c39a-11e7-82d9-a45a5d2b1c97.png">
