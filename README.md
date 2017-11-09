@@ -5,6 +5,11 @@ Live Version (hosted on Github Pages):https://sajudson.github.io/dataviz-project
 
 This is an exploratory visualization for a bike share system that is intended to assist in determine the factors that influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
 
+
+<img width="1065" alt="finalvis" src="https://user-images.githubusercontent.com/13242061/32617171-4355080a-c542-11e7-8f37-cee2e72047d5.png">
+
+
+
 # The Data
 ## Washington DC Bike Sharing Data Set
 
@@ -86,8 +91,9 @@ The final version of the visualization, shown below, follows the same basic layo
 - A group of toggle switch UI elements to control the filters for year, day type and weather situation appear in a row above the charts, and
 - A one dimensional brush appears the third row as part of the overview chart respectively.
 
+<img width="1065" alt="finalvis" src="https://user-images.githubusercontent.com/13242061/32617171-4355080a-c542-11e7-8f37-cee2e72047d5.png">
 
-<img width="1070" alt="final vis screenshot - draft" src="https://user-images.githubusercontent.com/13242061/32503344-fd554e16-c3aa-11e7-9e41-b7a4f1fa91a7.png">
+
 
 
 ## Radial Time Series - Users vs Time of Day
@@ -102,7 +108,10 @@ The prototype plot was revised after the prototype layout was completed, with th
 ### Final
 In the final version, separate plots were used for each user type.
 
-PENDING
+<img width="220" alt="visradialtscasfinal" src="https://user-images.githubusercontent.com/13242061/32615989-375f6548-c53f-11e7-8738-55af02add032.png">
+<img width="218" alt="visradialtsregfinal" src="https://user-images.githubusercontent.com/13242061/32615990-37789ec8-c53f-11e7-9dc9-6d6a3eff90c1.png">
+
+
 
 ## Scatter Plot - Users vs Continuous Weather Parameters
 The scatter plots show the relationship between the number of users and one of three continuous weather attributes. circular point marks represent specific days, with the number of users encoded as vertical spatial position and the value of the weather attribute encoded as horizontal spatial position. Reducing opacity is used to address occlusion of data points.
@@ -119,8 +128,6 @@ The final version of the scatter plots is essentially unchanged from the prototy
 
 <img width="730" alt="final vis scatterplot - unfiltered - draft" src="https://user-images.githubusercontent.com/13242061/32503343-fd3cd1ce-c3aa-11e7-8c35-65feff4bf77a.png">
 
-
-
 ## Line chart overview with brush
 The ninth chart is a time series line chart that serves as an overview or context chart. It shows the total number of users per day by date over the two years of data in the dataset.
 
@@ -135,7 +142,8 @@ The prototype shows the casual and registered users as well as apparent temperat
 ### Final
 The final version  of the time series line chart (illustrated by the three chart sequence for registered users below) shows only the total number of users. This approach was chosen to make it easier to understand the overview chart, and because this information is not provided in any other chart.
 
-<img width="1034" alt="final vis screenshot - overview initial position- draft" src="https://user-images.githubusercontent.com/13242061/32503346-fdd27e86-c3aa-11e7-9d43-6d0d20893325.png">
+<img width="1414" alt="vislinechartoverviewfinal" src="https://user-images.githubusercontent.com/13242061/32615987-372afd3a-c53f-11e7-8ae5-eac9bee804c3.png">
+
 
 # The Interactions
 The visualization uses three different and complementary interactions:
@@ -143,15 +151,23 @@ The visualization uses three different and complementary interactions:
   - Data range selection
   - Panning
 
-Filtering by categorical variables uses the  filter toggle switches at the top of page to select which data will be shown (toggle enable = green) and which will be hidden (toggle disabled = white). This enables the user to compare the impact of the these variables on the patterns and relationships shown in the detailed charts.
+Filtering by categorical variables (shown below) uses the  filter toggle switches at the top of page to select which data will be shown (toggle enable = green) and which will be hidden (toggle disabled = white). This enables the user to compare the impact of the these variables on the patterns and relationships shown in the detailed charts.
 
-The date range selection uses the brush in the overview chart - dragging and dropping the edges of the brush filters out the data that is outside of the brush.
+<img width="1438" alt="visfilteredfinal" src="https://user-images.githubusercontent.com/13242061/32615986-37140a26-c53f-11e7-8ca0-70a528790e7e.png">
+
+The date range selection (shown below) uses the brush in the overview chart - dragging and dropping the edges of the brush filters out the data that is outside of the brush.
+
+<img width="1436" alt="visbrushfinal" src="https://user-images.githubusercontent.com/13242061/32616534-8ca3fb3a-c540-11e7-8aec-966a79ec0940.png">
+
 
 Once a date range has been selected, dragging any point inside the brush allows the user to change the starting date of the data displayed in the detailed charts while leaving the duration of the date range unchanged. This allows the user to pan throughout the entire data range and see how patterns change over time.  
 
+The filters and brush elements can also be used together to apply the filters to specific date ranges selected by the brush (show below):
+
+<img width="1438" alt="visfilteredbrushfinal" src="https://user-images.githubusercontent.com/13242061/32616543-92130cfa-c540-11e7-8769-54c378d634be.png">
+
 # Additional Information
-## Known bugs and limitations
-  - Radial time series plot tick and text axis do not display properly, and time axis needs to be calibrated ().
+## known bugs and limitations
   - The toggles will allow all of the data to be filtered (i.e, not shown) on the chart.
   - The brush on the line chart overview and corresponding data filters are reset on window resizing (toggle filter settings persist on resize).
   - Line chart y ticks are not always redrawn correctly (ticks may be missing on the right side of the chart) when window is maximized.
@@ -161,9 +177,10 @@ Once a date range has been selected, dragging any point inside the brush allows 
     - Chart layouts retain 1:1  aspect ratio for scatter and radial line plots, leaving significant white space between the plots when the window is more significantly wider than it is tall.
     - the font size used for tick labels does not vary with size, and tick marks may overlap at smaller scales
 
-## Future Work and Enhancements
+## future work and enhancements
   - Mapping colors to points and lines based on categorical attributes, such as weather situation, working day, holiday, or season.
   - Add a second radial time series plot for weekly patterns
+  - Incorporate additional information into the overview line chart (e.g., temperature, casual and registered user counts, etc.)
   - Incorporate parallel axis plots in addition or in lieu of scatter plots
   - Allow user to select the x attributes shown in the scatter plots   
   - Multi level radial visualization to shown patterns over different time scales (e.g., annual, weekly, and daily)
@@ -172,7 +189,7 @@ Once a date range has been selected, dragging any point inside the brush allows 
     - layout of chart (e.g., layout is  altered based on device viewport and/or physical size).
 
 
-## Sources and Inspiration
+## sources and inspiration
 This visualization draws inspiration and code from the following sources:
 <a href='http://bl.ocks.org/curran/'>curran</a>'s blocks:
 <li> <a href='http://bl.ocks.org/curran/ecb09f2605c7fbbadf0eeb75da5f0a6b'>Stylized Scatter Plot with Color Legend</a>
@@ -193,11 +210,7 @@ It also draws on my previous work shown on [bl.ocks.org](http://bl.ocks.org/saju
 <li>[Bike Share Users Radial Time Series - Hourly](https://bl.ocks.org/sajudson/4f7e657d7114022114ea602641874c8c/)
 <li>[Interaction 2](https://bl.ocks.org/sajudson/a0713fb9826aea45f15b207dfec9bcb4)
 
-
-
-
-
-## Development and Deployment Notes (adapted from [UNHCR StreamGraph Explorer](https://github.com/unhcr/dataviz-streamgraph-explorer))
+## development and deployment notes (adapted from [UNHCR StreamGraph Explorer](https://github.com/unhcr/dataviz-streamgraph-explorer))
 
 The project is built from a template project that uses Webpack and D3 provided by Curran Kelleher. The template was designed as a starting point for interactive data visualization projects that require JavaScript code to be organized across many files (as ES6 modules).
 
