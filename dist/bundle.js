@@ -1013,7 +1013,7 @@ const radialOffset = 0 //.25*Math.PI
       .attr("transform", "rotate(22.5)")
       .style("text-anchor", "middle")
     .merge(rAxisText)
-      .attr("y", function(d) { return -rScale(d) - 3; })
+      .attr("y", function(d) { return -rScale(d) - 2; })
       .text(function(d) { return d; });
 
 
@@ -1026,12 +1026,11 @@ const radialOffset = 0 //.25*Math.PI
 
   aAxisG = aAxisG
       .data(d3.range(0, 360, xTickAngle))
-      .enter()
-        .append("g")
+      .enter().append("g")
         .attr('class', 'a-axis-g')
+      .merge(aAxisG)
         .attr("transform", function(d) { return "rotate(" + d + ")"; });
-
-
+        
   aAxisG
       .append("line")
       .attr('class', 'a-axis-g tick')
