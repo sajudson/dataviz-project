@@ -990,27 +990,6 @@ const radialOffset = 0 //.25*Math.PI
   //console.log(`rScaleTicks ${rScaleTicks}`)
   //drawing radial tick lines
 
-  var rAxisG = gr.selectAll('.r-axis-g').data([null]);
-  rAxisG.exit().remove();
-  // var rAxisGExit = gr.selectAll('r-axis-g').exit().remove();
-
-  // following code creates 5 objects
-  // does not appear to do anything useful
-  // tried with code commented out and result did not change
-  // may be because I am tying circles and text to gr
-  //
-
-  // rAxisG = rAxisG
-  //   .data(rScale.ticks(5).slice(1))
-  //   .enter().append('g')
-  //     .attr('class','r-axis-g')
-  //   .merge(rAxisG);
-
-//    .data(rScale.ticks(5).slice(1))
-//    .enter().append('g');
-
-  // rAxisGExit;
-
   var rAxisG = gr
     .selectAll('.r-axis-g')
     .data([null]);
@@ -1034,7 +1013,6 @@ const radialOffset = 0 //.25*Math.PI
 
   // these are create but 'ghosts' of previously drawn labels
   // remain on chart. Their angular position relative to the origin // stays the same, but the radius varies
-  console.log(rScaleTicks)
   rAxisText
     .data(rScaleTicks)
     .enter().append('text')
