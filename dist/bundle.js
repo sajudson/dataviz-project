@@ -430,6 +430,7 @@ d3.csv('data/hour.csv', row1, data => {
       xValue:xValue4,
       yValue1:yValue1,
       yValue2:yValue2,
+      yValue3:yValue3,
       xLabel:xLabel4,
       yLabel:"Users",
       colorValue:pointColor2,
@@ -708,6 +709,7 @@ const yAxis = d3.axisLeft()
     xValue,
     yValue1,
     yValue2,
+    yValue3,
     xLabel,
     yLabelLeft,
     yLabelRight,
@@ -729,15 +731,6 @@ const yAxis = d3.axisLeft()
   const height = vizDiv.offsetHeight;
 
 
-//various unsuccesful attempts to get brush to stay in position between redraws
- //  console.log(brushDateRange)
- // console.log(xScale(brushDateRange[0]),xScale(brushDateRange[1]))
- // console.log(xScale.invert(brushDateRange[0]),xScale.invert(brushDateRange[1]))
-
-  //var deltaBrushRange = brushDateRange[1]-brushDateRange[0];
-  // var brush = d3.brushX()
-  //     .extent([[xScale(brushDateRange[0]),0], [deltaBrushRange, height]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
-  //     .on("brush end", brushed);
 
   var brush = d3.brushX()
       .extent([[0,0], [width, height]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
@@ -761,12 +754,6 @@ const yAxis = d3.axisLeft()
     .attr('width',width)
     .attr('height',height);
 
-//following code works - only one set of axes, but
-//new line added to dom each time it resizes
-  // var g = svg.selectAll('g').data([null]);
-  // g = g.enter().append('g')
-  //     .merge(g)
-  //     .attr('transform', `translate(${margin.left},${margin.top})`);
 
 
   var g = svg.selectAll('.lineChartGroup').data([null]);
@@ -781,19 +768,12 @@ const yAxis = d3.axisLeft()
   xScale
     .domain([minDate,maxDate]) //[minDate,maxDate] or d3.extent(data, xValue)
     .range([0, innerWidth])
-    .nice(xTicks);
+    .nice();
 
   yScale
-    .domain(d3.extent(data, yValue1))
+    .domain(d3.extent(data, yValue3))
     .range([innerHeight, 0])
     .nice(yTicks);
-
-
-  // var g = svg.selectAll('.lineChartGroup').data([null]);
-  //g.enter().append('g').attr('class','.lineChartGroup');
-  // var g = svg.selectAll('g').data([null]);
-  // var gExit = svg.selectAll('.lineChartGroup').exit().remove();
-
 
   var xAxisG = g.selectAll('#x-axis-g').data([null]);
 
@@ -810,7 +790,6 @@ const yAxis = d3.axisLeft()
     .attr('id','y-axis-g');
 
   var xAxisText = g.selectAll('#x-axis-label').data([null]);
-  // var xAxisTextExit = g.selectAll('#x-axis-label').exit().remove();
 
   xAxisText = xAxisText.enter().append('text').merge(xAxisText)
     .attr('class', 'axis-label')
@@ -821,7 +800,6 @@ const yAxis = d3.axisLeft()
     .text(xLabel);
 
   var yAxisText = g.selectAll('#y-axis-label').data([null]);
-  // var yAxisTextExit = g.selectAll('#y-axis-label').exit().remove();
 
   yAxisText = yAxisText.enter().append('text').merge(yAxisText)
     .attr('class', 'axis-label')
@@ -848,7 +826,7 @@ const curveFunction = d3.curveCatmullRom
 
 const lineRegistered = d3.line()
   .x(d => xScale(xValue(d)))
-  .y(d => yScale(yValue1(d)))
+  .y(d => yScale(yValue3(d)))
   .curve(curveFunction);
 
   //data join
@@ -867,7 +845,7 @@ userLines;
   //merge new and existing elements
   userLinesEnter
     .attr('fill','none')
-    .attr('stroke', 'green')
+    .attr('stroke', 'red')
     .attr('stroke-width', 1)
     .merge(userLines)
     .attr('d', lineRegistered(data));

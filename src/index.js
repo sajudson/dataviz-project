@@ -353,6 +353,7 @@ d3.csv('data/hour.csv', row1, data => {
       xValue:xValue4,
       yValue1:yValue1,
       yValue2:yValue2,
+      yValue3:yValue3,
       xLabel:xLabel4,
       yLabel:"Users",
       colorValue:pointColor2,
