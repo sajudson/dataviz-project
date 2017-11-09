@@ -26,7 +26,7 @@ export default function (div, props) {
   console.log(`radial plot ${width}, ${height}`)
   //maintain 1:1 aspect ration for scatter plot
   const minDimension = d3.min([width, height]);
-  console.log(`radial plot- min dimension ${width}, ${height}`)
+  //console.log(`radial plot- min dimension ${width}, ${height}`)
   var svgEnter = svg
     .enter()
     .append('svg');
@@ -45,7 +45,7 @@ export default function (div, props) {
   const innerWidth = minDimension - margin.left - margin.right;
   const rScaleMax = innerHeight/2
   const rMax = 1000
-  console.log(`radial plot iH/iW/rSM/rM${innerWidth}, ${innerHeight},${rScaleMax},${rMax}`)
+  //console.log(`radial plot iH/iW/rSM/rM${innerWidth}, ${innerHeight},${rScaleMax},${rMax}`)
   // g object for main plot
   let g = svg.selectAll('g').data([null]);
 
@@ -92,14 +92,14 @@ export default function (div, props) {
   const xTickLabelMultiplier = 2400/numTicks
   const rScale = d3.scaleLinear()
   const aScale = d3.scaleLinear()
-  console.log(`xTickLength ${xTickLength}, numTicks${numTicks},xTickAngle ${xTickAngle}, xTickLabelMultiplier ${xTickLabelMultiplier}`)
+  //console.log(`xTickLength ${xTickLength}, numTicks${numTicks},xTickAngle ${xTickAngle}, xTickLabelMultiplier ${xTickLabelMultiplier}`)
   rScale
     .domain([0,rMax])
     .range([0,rScaleMax]);
 
   const rScaleTicks = rScale.ticks(5).slice(1);
 
-  console.log(`rScaleTicks ${rScaleTicks}`)
+  //console.log(`rScaleTicks ${rScaleTicks}`)
   //drawing radial tick lines
 
   var rAxisG = gr.selectAll('.r-axis-g').data([null]);
@@ -111,37 +111,46 @@ export default function (div, props) {
   // tried with code commented out and result did not change
   // may be because I am tying circles and text to gr
   //
-  rAxisG = rAxisG
-    .data(rScale.ticks(5).slice(1))
-    .enter().append('g')
-      .attr('class','r-axis-g')
-    .merge(rAxisG);
+
+  // rAxisG = rAxisG
+  //   .data(rScale.ticks(5).slice(1))
+  //   .enter().append('g')
+  //     .attr('class','r-axis-g')
+  //   .merge(rAxisG);
+
 //    .data(rScale.ticks(5).slice(1))
 //    .enter().append('g');
 
   // rAxisGExit;
 
-  var rAxisTicks = gr.selectAll('.r-axis-ticks').data([null]);
-  rAxisTicks.exit().remove();
+  var rAxisG = gr
+    .selectAll('.r-axis-g')
+    .data([null]);
 
-  rAxisTicks
-    .data(rScale.ticks(5).slice(1))
+  rAxisG.exit().remove();
+
+  rAxisG
+    .data(rScaleTicks)
     .enter().append('circle')
-      .attr('class','axis circle r-axis-tick')
-    .merge(rAxisTicks)
+      .attr('class','axis circle r-axis-g')
+    .merge(rAxisG)
+      .attr('fill','none')
+      .attr('stroke','lightgrey')
       .attr("r",rScale);
 
   var rAxisText = gr
     .selectAll('.r-axis-text')
-    .data(rScale.ticks(5).slice(1));
+    .data([null]);
 
   rAxisText.exit().remove();
 
   // these are create but 'ghosts' of previously drawn labels
   // remain on chart. Their angular position relative to the origin // stays the same, but the radius varies
+  console.log(rScaleTicks)
   rAxisText
+    .data(rScaleTicks)
     .enter().append('text')
-      .attr('class','tick r-axis-text')
+      .attr('class','r-axis-text')
       .attr("transform", "rotate(22.5)")
       .style("text-anchor", "middle")
     .merge(rAxisText)
@@ -150,7 +159,7 @@ export default function (div, props) {
 
 
   //draw angular tick lines
-  var aAxisG = gr.selectAll('.a-axis-g').data([null]);
+  var aAxisG = ga.selectAll('.a-axis-g').data([null]);
   // these appear to function as intended - they exist in the dom,
   //and they are visible
 
@@ -162,7 +171,7 @@ export default function (div, props) {
         .append("g")
         .attr('class', 'a-axis-g axis tick')
         .attr("transform", function(d) { return "rotate(" + d + ")"; });
-      
+
 
   aAxisG
       .append("line")
@@ -170,11 +179,11 @@ export default function (div, props) {
 
 
 
-  var aAxisText = gr.selectAll('.a-axis-text').data([null]);
+  var aAxisText = ga.selectAll('.a-axis-text').data([null]);
   // these do no appear in the dom at all
   aAxisText.exit().remove;
 
-  aAxisText = aAxisG
+  aAxisText = aAxisText
       .data(d3.range(0, 360, xTickAngle))
       .enter()
         .append("text")
