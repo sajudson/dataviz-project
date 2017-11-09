@@ -17,7 +17,9 @@ body {
   height: 25vmin;
   width: 100vmin;}
 
-.tick line {
+.tick line,
+.r-axis-tick line,
+.a-axis-tick line {
 stroke: #b5b5b5;
 stroke-width: 1;
 }
@@ -35,7 +37,10 @@ stroke:  LightGrey;
   stroke-dasharray: none;
 }
 
-.tick text, .legendCells text {
+.tick text,
+.legendCells text,
+.r-axis-text text,
+.a-axis-text text {
   fill: #8E8883;
   font-size: 6pt;
   font-family: sans-serif;
@@ -61,7 +66,7 @@ stroke:  LightGrey;
   stroke-width: 1px;
 	clip-path: url(#clip)
   }
-	
+
 
   .zoom {
   cursor: move;

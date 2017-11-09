@@ -46,14 +46,6 @@ export default function (div, props) {
   const rScaleMax = innerHeight/2
   const rMax = 1000
   //console.log(`radial plot iH/iW/rSM/rM${innerWidth}, ${innerHeight},${rScaleMax},${rMax}`)
-  // g object for main plot
-  let g = svg.selectAll('g').data([null]);
-
-    g = g.enter().append('g')
-      .merge(g)
-      .attr('transform',
-     				`translate(${innerWidth/2+margin.left},
-  										 ${innerHeight/2+margin.top})`);
 
    // angular and radial tick marks need to be tied to different g
    //objects. If same g object used for both, if you have r radial
@@ -129,10 +121,11 @@ export default function (div, props) {
     .data(rScaleTicks)
     .enter().append('text')
       .attr('class','r-axis-text')
+      .attr('font-size','4pt')
       .attr("transform", "rotate(22.5)")
       .style("text-anchor", "middle")
     .merge(rAxisText)
-      .attr("y", function(d) { return -rScale(d) + 10; })
+      .attr("y", function(d) { return -rScale(d) - 3; })
       .text(function(d) { return d; });
 
 
@@ -147,32 +140,43 @@ export default function (div, props) {
       .data(d3.range(0, 360, xTickAngle))
       .enter()
         .append("g")
-        .attr('class', 'a-axis-g axis tick')
+        .attr('class', 'a-axis-g')
         .attr("transform", function(d) { return "rotate(" + d + ")"; });
 
 
   aAxisG
       .append("line")
+      .attr('class', 'a-axis-g tick')
+      .attr('stroke','lightgrey')
       .attr("x2", rScaleMax);
 
 
 
-  var aAxisText = ga.selectAll('.a-axis-text').data([null]);
-  // these do no appear in the dom at all
-  aAxisText.exit().remove;
+  // var aAxisText = ga.selectAll('.a-axis-text');
+  // // these do no appear in the dom at all
+  // aAxisText.exit().remove;
 
-  aAxisText = aAxisText
-      .data(d3.range(0, 360, xTickAngle))
-      .enter()
+  aAxisG
         .append("text")
-        .attr('class','a-axis-text')
-      .merge(aAxisText)
+        .attr('class','a-axis-g a-axis-text')
+        .attr('font-size','6pt')
         .attr("x", rScaleMax + 6)
         .attr("dy", ".35em")
-        .style("text-anchor", function(d) { return d < 270 && d > 90 ? "end" : null; })
-        .attr("transform", function(d) { return d < 270 && d > 90 ? "rotate(180 " + (rScaleMax + 6) + ",0)" : null; })
+        .style("text-anchor","middle")
+        .attr("transform", `rotate(90, ${rScaleMax + 6},0)`)
         .text(function(d,i) { return i*xTickLabelMultiplier + "h"; });
 
+
+
+  // g object for main plot
+  let g = svg.selectAll('.gl').data([null]);
+
+    g = g.enter().append('g')
+      .merge(g)
+      .attr('class','gl')
+      .attr('transform',
+            `translate(${innerWidth/2+margin.left},
+                       ${innerHeight/2+margin.top})`);
 
   //d.hr variable is hardcoded for time being
   // waiting until other issues debugged
