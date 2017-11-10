@@ -1,14 +1,18 @@
 
 Live Version (hosted on Github Pages):https://sajudson.github.io/dataviz-project/
 
+Video: PENDING
+
+
 # Introduction
 
-This is an exploratory visualization for a bike share system that is intended to assist in determine the factors that influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
+This is an exploratory visualization for a bike share system that is intended to assist in determining which factors  influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
 
-The techniques shown here can be applied to any multivariate time series data sets.
+The techniques shown here can be applied to other multivariate time series data sets.
 
 
-<img width="1065" alt="finalvis" src="https://user-images.githubusercontent.com/13242061/32617171-4355080a-c542-11e7-8f37-cee2e72047d5.png">
+![Layout](/images/visonLoadfinal.png)
+
 
 # The Data
 ## Capital Bike Share System Data
@@ -95,7 +99,8 @@ The final version of the visualization, shown below, follows the same basic layo
 - A group of toggle switch UI elements to control the filters for year, day type and weather situation appear in a row above the charts, and
 - A one dimensional brush appears the third row as part of the overview chart respectively.
 
-<img width="1065" alt="finalvis" src="https://user-images.githubusercontent.com/13242061/32617171-4355080a-c542-11e7-8f37-cee2e72047d5.png">
+![Layout](/images/visonLoadfinal.png)
+
 
 
 
@@ -110,10 +115,10 @@ The prototype plot was revised after the prototype layout was completed, with th
 
 
 ### Final
-In the final version, separate plots were used for each user type.
+In the final version, the plots were calibrated to align with the hourly tick marks and separate plots were used for each user type.
+![Radial Plots](/images/visRadialTSCasRegFinal.png)
 
-<img width="220" alt="visradialtscasfinal" src="https://user-images.githubusercontent.com/13242061/32615989-375f6548-c53f-11e7-8738-55af02add032.png">
-<img width="218" alt="visradialtsregfinal" src="https://user-images.githubusercontent.com/13242061/32615990-37789ec8-c53f-11e7-9dc9-6d6a3eff90c1.png">
+
 
 
 
@@ -130,7 +135,8 @@ The scatter plots are used to look for potential casual relationships between we
 ### Final
 The final version of the scatter plots is essentially unchanged from the prototype, with minor changes to point size and opacity.
 
-<img width="730" alt="final vis scatterplot - unfiltered - draft" src="https://user-images.githubusercontent.com/13242061/32503343-fd3cd1ce-c3aa-11e7-8c35-65feff4bf77a.png">
+![Scatter Plots](/images/visscatterfinal.png)
+
 
 ## Line chart overview with brush
 The ninth chart is a time series line chart that serves as an overview or context chart. It shows the total number of users per day by date over the two years of data in the dataset.
@@ -146,7 +152,7 @@ The prototype shows the casual and registered users as well as apparent temperat
 ### Final
 The final version  of the time series line chart (illustrated by the three chart sequence for registered users below) shows only the total number of users. This approach was chosen to make it easier to understand the overview chart, and because this information is not provided in any other chart.
 
-<img width="1414" alt="vislinechartoverviewfinal" src="https://user-images.githubusercontent.com/13242061/32615987-372afd3a-c53f-11e7-8ae5-eac9bee804c3.png">
+![Line Chart Overview with Brush](/images/vislinechartoverviewfinal.png)
 
 
 # The Interactions
@@ -157,18 +163,18 @@ The visualization uses three different and complementary interactions:
 
 Filtering by categorical variables (shown below) uses the  filter toggle switches at the top of page to select which data will be shown (toggle enable = green) and which will be hidden (toggle disabled = white). This enables the user to compare the impact of the these variables on the patterns and relationships shown in the detailed charts.
 
-<img width="1438" alt="visfilteredfinal" src="https://user-images.githubusercontent.com/13242061/32615986-37140a26-c53f-11e7-8ca0-70a528790e7e.png">
+![Filters Applied](/images/visfilteredfinal.png)
 
 The date range selection (shown below) uses the brush in the overview chart - dragging and dropping the edges of the brush filters out the data that is outside of the brush.
 
-<img width="1436" alt="visbrushfinal" src="https://user-images.githubusercontent.com/13242061/32616534-8ca3fb3a-c540-11e7-8aec-966a79ec0940.png">
+![Brush Applied for Date Selection](/images/visbrushfinal.png)
 
 
 Once a date range has been selected, dragging any point inside the brush allows the user to change the starting date of the data displayed in the detailed charts while leaving the duration of the date range unchanged. This allows the user to pan throughout the entire data range and see how patterns change over time.  
 
 The filters and brush elements can also be used together to apply the filters to specific date ranges selected by the brush (show below):
+![Filter & Brush Applied](/images/visfilteredbrushfinal.png)
 
-<img width="1438" alt="visfilteredbrushfinal" src="https://user-images.githubusercontent.com/13242061/32616543-92130cfa-c540-11e7-8769-54c378d634be.png">
 
 # Additional Information...
 ## known bugs and limitations
