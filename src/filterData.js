@@ -10,6 +10,7 @@ export default function (data, props) {
     weatherSit1Filter,
     weatherSit2Filter,
     weatherSit3Filter,
+    weatherSit4Filter,
     unfilteredOpacity
   } = props;
 
@@ -27,6 +28,7 @@ export default function (data, props) {
       else if(d.weathersit==1 && weatherSit1Filter==false) {return}
       else if(d.weathersit==2 && weatherSit2Filter==false) {return}
       else if(d.weathersit==3 && weatherSit3Filter==false) {return}
+      else if(d.weathersit==4 && weatherSit4Filter==false) {return}
       else filteredData.push(d);
     });
   //console.log(data);

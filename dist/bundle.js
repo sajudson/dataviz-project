@@ -129,6 +129,7 @@ console.log("start index.js");
       var weatherSit1Filter=true;
       var weatherSit2Filter=true;
       var weatherSit3Filter=true;
+      var weatherSit4Filter=true;
 
 
       const margin = { left: 55, right: 10, top: 10, bottom: 55 };
@@ -154,7 +155,7 @@ console.log("start index.js");
           d.casual = +d.casual;
           d.registered = +d.registered;
           d.cnt = +d.cnt;
-          d.filterOpacity=1;
+          d.filterOpacity=.15;
           return d;
       };
 
@@ -176,7 +177,7 @@ console.log("start index.js");
           d.casual = +d.casual;
           d.registered = +d.registered;
           d.cnt = +d.cnt;
-          d.filterOpacity=.25;
+          d.filterOpacity=.15;
           return d;
       };
 
@@ -236,7 +237,7 @@ d3.csv('data/hour.csv', row1, data => {
     console.log('date range: '+ dateRange[0] +" to "+dateRange[1]);
 
     //set defaultOpacity
-    let unfilteredOpacity = .25;
+    let unfilteredOpacity = .1;
     Object(__WEBPACK_IMPORTED_MODULE_3__applyFilter__["a" /* default */])(dataHour,{
       dateRange,
       year2011Filter,
@@ -478,6 +479,12 @@ $(function() {
       //console.log(weatherSit1Filter);
       render1()
     });
+
+      $('#weatherSit4').change(function() {
+      weatherSit4Filter = $(this).prop('checked');
+      //console.log(weatherSit1Filter);
+      render1()
+        });
 });
 });
 
@@ -1109,6 +1116,7 @@ const radialOffset = 0 //.25*Math.PI
     weatherSit1Filter,
     weatherSit2Filter,
     weatherSit3Filter,
+    weatherSit4Filter,
     unfilteredOpacity
   } = props;
 
@@ -1131,6 +1139,7 @@ const radialOffset = 0 //.25*Math.PI
       else if(d.weathersit==1 && weatherSit1Filter==false) {d.filterOpacity=0.0}
       else if(d.weathersit==2 && weatherSit2Filter==false) {d.filterOpacity=0.0}
       else if(d.weathersit==3 && weatherSit3Filter==false) {d.filterOpacity=0.0}
+      else if(d.weathersit==4 && weatherSit4Filter==false) {d.filterOpacity=0.0}
       });
   //console.log(data);
 });;
@@ -1153,6 +1162,7 @@ const radialOffset = 0 //.25*Math.PI
     weatherSit1Filter,
     weatherSit2Filter,
     weatherSit3Filter,
+    weatherSit4Filter,
     unfilteredOpacity
   } = props;
 
@@ -1170,6 +1180,7 @@ const radialOffset = 0 //.25*Math.PI
       else if(d.weathersit==1 && weatherSit1Filter==false) {return}
       else if(d.weathersit==2 && weatherSit2Filter==false) {return}
       else if(d.weathersit==3 && weatherSit3Filter==false) {return}
+      else if(d.weathersit==4 && weatherSit4Filter==false) {return}
       else filteredData.push(d);
     });
   //console.log(data);

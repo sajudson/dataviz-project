@@ -10,6 +10,7 @@ export default function (data, props) {
     weatherSit1Filter,
     weatherSit2Filter,
     weatherSit3Filter,
+    weatherSit4Filter,
     unfilteredOpacity
   } = props;
 
@@ -32,6 +33,7 @@ export default function (data, props) {
       else if(d.weathersit==1 && weatherSit1Filter==false) {d.filterOpacity=0.0}
       else if(d.weathersit==2 && weatherSit2Filter==false) {d.filterOpacity=0.0}
       else if(d.weathersit==3 && weatherSit3Filter==false) {d.filterOpacity=0.0}
+      else if(d.weathersit==4 && weatherSit4Filter==false) {d.filterOpacity=0.0}
       });
   //console.log(data);
 };

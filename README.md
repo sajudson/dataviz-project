@@ -11,7 +11,7 @@ The techniques shown here can be applied to any multivariate time series data se
 <img width="1065" alt="finalvis" src="https://user-images.githubusercontent.com/13242061/32617171-4355080a-c542-11e7-8f37-cee2e72047d5.png">
 
 # The Data
-## Washington DC Bike Sharing Data Set
+## Capital Bike Share System Data
 
 This data set is from the Washington DC Bike Share system and covers a two year period between Jan 2011 and Dec 2012. The data set contains the following attributes:
   - Date and Time:
@@ -21,7 +21,7 @@ This data set is from the Washington DC Bike Share system and covers a two year 
       - Day of week (ordinal/categorical).
   - Weather
     - Temperature, humidity, and wind speed (continuous).
-    - Weather situation (categorical).
+    - Weather situation (i.e,. precipitation) (categorical).
     - Derived attributes:  
       - Apparent temperature (continuous).
   - System users:
@@ -37,11 +37,11 @@ Hourly data was imported then aggregated into daily intervals, using mean values
 
 ## Source
 
-This data is from [UCI Machine Learning Repository: Bike Sharing Data Set](https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset)
+This data set was created from the [Capital Bike Share System Data](https://www.capitalbikeshare.com/system-data) for 2011 and 2012, and is archived in [UCI Machine Learning Repository: Bike Sharing Data Set](https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset). The dataset used for these visualizations can be found [here](https://archive.ics.uci.edu/ml/machine-learning-databases/00275/Bike-Sharing-Dataset.zip) as a zip archive.
 
-The dataset file can be found [here](https://archive.ics.uci.edu/ml/machine-learning-databases/00275/Bike-Sharing-Dataset.zip) as a zip archive.
-[Daily Data Block Summary](https://bl.ocks.org/sajudson/d8d4909fa0512302a95b1e0982a07c0f)
-[Hourly Data Block Summary](https://bl.ocks.org/sajudson/3b64ad3a4e4e2c5f80898eebd40646ca)
+Summaries of the daily and hourly data sets are available at:
+ - [Daily Data Block Summary](https://bl.ocks.org/sajudson/d8d4909fa0512302a95b1e0982a07c0f)
+ - [Hourly Data Block Summary](https://bl.ocks.org/sajudson/3b64ad3a4e4e2c5f80898eebd40646ca)
 
 
 
@@ -59,7 +59,7 @@ This visualization is intended to help answer the following questions:
 The visualization was specifically designed to perform the following tasks:
   - Show time based patterns using radial and rectilinear line charts.
   - Show relationships between continuous variables and the number of users using scatter plots.
-  - Examine influences of categorical variables (weathersit, workingday, holiday) by filtering the radial line plot and scatter plots (using working memory to spot changes in patterns).
+  - Examine influences of categorical variables (weather situation, workingday, holiday) by filtering the radial line plot and scatter plots (using working memory to spot changes in patterns).
   - Look at differences in both time of use patterns and factors influencing casual and registered users using multiple views grouped by type of user.
   - Examine the changes in the patterns and relationships over time using one dimensional brush on the overview line chart to pan and filter the data shown in the other charts.
   - Focus on patterns and relationships for specific periods of time, using the brush to control the specific time ranges (i.e., start and end date) shown in the radial and scatter plots.
@@ -69,7 +69,7 @@ The visualization was specifically designed to perform the following tasks:
 ## Idioms
 The visualization makes use of two specific idioms - Multiple Views and Linked Navigation.
 
-The eight detailed charts are multiple views used to show commonalities and differences in the patterns between casual and registered users in the 8. The charts corresponding to each user type are grouped horizontally, with charts showing the same parameters aligned vertically. This arrangement allows easy comparison between the causal and registered user patterns and relationships within working memory.
+The eight detailed charts are multiple views used to show commonalities and differences in the patterns between casual and registered users. The charts corresponding to each user type are grouped horizontally, with charts showing the same parameters aligned vertically. This arrangement allows easy comparison between the causal and registered user patterns and relationships within working memory.
 
 The overview chart uses a brush to select specific date ranges, which, along with the toggle switch UI elements, configure the filters that control which data is visible in the 8 detailed charts. The brush and toggle switches operating together implement the linked navigation idiom.
 
@@ -173,7 +173,7 @@ The filters and brush elements can also be used together to apply the filters to
 # Additional Information...
 ## known bugs and limitations
   - The toggles will allow all of the data to be filtered (i.e, not shown) on the chart.
-  - The brush on the line chart overview and corresponding data filters are reset on window resizing (toggle filter settings persist on resize).
+  - The brush on the line chart overview and corresponding date range filters are reset on window resizing (toggle filter settings persist on resize).
   - Line chart y ticks are not always redrawn correctly (ticks may be missing on the right side of the chart) when window is maximized.
   - Delays redrawing the visualizations when window is resized. The lag is noticeable but not excessive when running on a laptop or desktop, but may be an obstacle for mobile platforms.
   - The visualization in its current form is intended to be view on a desktop or laptop screen, preferably at or close to full screen (i.e., as a dashboard). It may not display as intended during when viewed in a small window or on a mobile device. The following limitations exist:

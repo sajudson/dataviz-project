@@ -53,6 +53,7 @@ console.log("start index.js");
       var weatherSit1Filter=true;
       var weatherSit2Filter=true;
       var weatherSit3Filter=true;
+      var weatherSit4Filter=true;
 
 
       const margin = { left: 55, right: 10, top: 10, bottom: 55 };
@@ -78,7 +79,7 @@ console.log("start index.js");
           d.casual = +d.casual;
           d.registered = +d.registered;
           d.cnt = +d.cnt;
-          d.filterOpacity=1;
+          d.filterOpacity=.15;
           return d;
       };
 
@@ -100,7 +101,7 @@ console.log("start index.js");
           d.casual = +d.casual;
           d.registered = +d.registered;
           d.cnt = +d.cnt;
-          d.filterOpacity=.25;
+          d.filterOpacity=.15;
           return d;
       };
 
@@ -160,7 +161,7 @@ d3.csv('data/hour.csv', row1, data => {
     console.log('date range: '+ dateRange[0] +" to "+dateRange[1]);
 
     //set defaultOpacity
-    let unfilteredOpacity = .25;
+    let unfilteredOpacity = .1;
     applyFilter(dataHour,{
       dateRange,
       year2011Filter,
@@ -402,5 +403,11 @@ $(function() {
       //console.log(weatherSit1Filter);
       render1()
     });
+
+      $('#weatherSit4').change(function() {
+      weatherSit4Filter = $(this).prop('checked');
+      //console.log(weatherSit1Filter);
+      render1()
+        });
 });
 });
