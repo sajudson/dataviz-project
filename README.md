@@ -5,6 +5,8 @@ Live Version (hosted on Github Pages):https://sajudson.github.io/dataviz-project
 
 This is an exploratory visualization for a bike share system that is intended to assist in determine the factors that influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
 
+The techniques shown here can be applied to any multivariate time series data sets.
+
 
 <img width="1065" alt="finalvis" src="https://user-images.githubusercontent.com/13242061/32617171-4355080a-c542-11e7-8f37-cee2e72047d5.png">
 
@@ -13,17 +15,21 @@ This is an exploratory visualization for a bike share system that is intended to
 
 This data set is from the Washington DC Bike Share system and covers a two year period between Jan 2011 and Dec 2012. The data set contains the following attributes:
   - Date and Time:
-    - Year, month, day, hour. (continuous/temporal, may be treated as ordinal or categorical in some cases)
-    - Derived attributes: season (categorical), working day (categorical), holiday (categorical), day of week (ordinal).
-  - Weather (rescaled to [0,1])
-    - Temperature (continuous), humidity (continuous), weather situation (categorical)
-    - Derived attributes:  apparent temperature (continuous)
+    - Date (year/month/day) and hour (continuous/temporal).
+    - Derived attributes:
+      - Season, working day, and holiday (categorical).
+      - Day of week (ordinal/categorical).
+  - Weather
+    - Temperature, humidity, and wind speed (continuous).
+    - Weather situation (categorical).
+    - Derived attributes:  
+      - Apparent temperature (continuous).
   - System users:
     - Casual, registered, and total user counts (continuous).
 
-  Raw temporal date and time variables are continuous, but year and month can also function as categorical attributes because of the limited number of unique values (2 and 12 respectively). The derived temporal values of season, working day, holiday and day of week were treated as  categorical attributes.
+  The raw date and time variables are continuous, but year and month can also function as categorical attributes because of the limited number of unique values (2 and 12 values respectively). The derived temporal values of season, working day, holiday and day of week were treated as categorical attributes.
 
-  All categorical variables were mapped to integers in the original data set.
+  All categorical variables were mapped to integers in the original data set. Continuous weather data was rescaled from the original units to the range [0,1].
 
 ## Processing
 
@@ -45,18 +51,18 @@ The dataset file can be found [here](https://archive.ics.uci.edu/ml/machine-lear
 This visualization is intended to help answer the following questions:
   - What factors influence the number of casual and registered
  users of the bike share system?
-  - How are these factors similar and different between the two types of users
+  - How are these factors similar and different between the two types of users?
   - How much did ridership increase from 2011 to 2012, accounting for seasonality and weather?
   - Where is growth in ridership coming - casual or registered users?
 
 ## Tasks
 The visualization was specifically designed to perform the following tasks:
-  - Show time based patterns using radial and rectilinear line charts
-  - Show relationships between continuous variables and the number of users using scatter plots
-  - Examine influences of categorical variables (weathersit, workingday, holiday) by filtering the radial line plot and scatter plots (using working memory to spot changes in patterns)
-  - Look at differences in both time of use patterns and factors influencing casual and registered users using multiple views grouped by type of user
+  - Show time based patterns using radial and rectilinear line charts.
+  - Show relationships between continuous variables and the number of users using scatter plots.
+  - Examine influences of categorical variables (weathersit, workingday, holiday) by filtering the radial line plot and scatter plots (using working memory to spot changes in patterns).
+  - Look at differences in both time of use patterns and factors influencing casual and registered users using multiple views grouped by type of user.
   - Examine the changes in the patterns and relationships over time using one dimensional brush on the overview line chart to pan and filter the data shown in the other charts.
-  - Focus on patterns and relationships for specific periods of time, using the brush to control the specific time ranges (i.e., start and end date) shown in the radial and scatter plots
+  - Focus on patterns and relationships for specific periods of time, using the brush to control the specific time ranges (i.e., start and end date) shown in the radial and scatter plots.
 
 
 
@@ -129,7 +135,7 @@ The final version of the scatter plots is essentially unchanged from the prototy
 ## Line chart overview with brush
 The ninth chart is a time series line chart that serves as an overview or context chart. It shows the total number of users per day by date over the two years of data in the dataset.
 
-Total number of daily users is encoded as vertical position and date is encoded as horizontal position. This is an overview graph, and since color is used in the other charts to distinguish between the type of users (casual or registered), the total number of users in the final version uses black to distinguish this from the other charts.
+Total number of daily users is encoded as vertical position and date is encoded as horizontal position. This is an overview graph, and since color is used in the other charts to distinguish between the type of users (casual or registered), the total number of users in the final version uses red to distinguish this from the other charts.
 
 ### Prototype
 The prototype shows a single scatter plot which is representative of all six scatterplots.
@@ -145,8 +151,8 @@ The final version  of the time series line chart (illustrated by the three chart
 
 # The Interactions
 The visualization uses three different and complementary interactions:
-  - Filtering
-  - Data range selection
+  - Filtering,
+  - Data range selection, and
   - Panning
 
 Filtering by categorical variables (shown below) uses the  filter toggle switches at the top of page to select which data will be shown (toggle enable = green) and which will be hidden (toggle disabled = white). This enables the user to compare the impact of the these variables on the patterns and relationships shown in the detailed charts.
@@ -166,26 +172,28 @@ The filters and brush elements can also be used together to apply the filters to
 
 # Additional Information...
 ## known bugs and limitations
-  - The tick labels need to be calibrated to align with the data (potentially related to time stamps being stored in UTC time format)
   - The toggles will allow all of the data to be filtered (i.e, not shown) on the chart.
   - The brush on the line chart overview and corresponding data filters are reset on window resizing (toggle filter settings persist on resize).
   - Line chart y ticks are not always redrawn correctly (ticks may be missing on the right side of the chart) when window is maximized.
   - Delays redrawing the visualizations when window is resized. The lag is noticeable but not excessive when running on a laptop or desktop, but may be an obstacle for mobile platforms.
   - The visualization in its current form is intended to be view on a desktop or laptop screen, preferably at or close to full screen (i.e., as a dashboard). It may not display as intended during when viewed in a small window or on a mobile device. The following limitations exist:
     - Small window sizes can cause the charts to wrap onto a new line.
-    - Chart layouts retain 1:1  aspect ratio for scatter and radial line plots, leaving significant white space between the plots when the window is more significantly wider than it is tall.
-    - the font size used for tick labels does not vary with size, and tick marks may overlap at smaller scales
+    - Chart layouts retain 1:1  aspect ratio for scatter and radial line plots, leaving significant white space between the plots when the window is significantly wider than it is tall.
+    - The font size used for tick labels does not vary with size, and tick marks may overlap at smaller scales.
 
 ## future work and enhancements
-  - Mapping colors to points and lines based on categorical attributes, such as weather situation, working day, holiday, or season.
+  - Modifying the radial line chart to allow mapping colors/opacity to specific days based on categorical attributes, such as weather situation, working day, holiday, or season.
   - Add a second radial time series plot for weekly patterns
   - Incorporate additional information into the overview line chart (e.g., temperature, casual and registered user counts, etc.)
   - Incorporate parallel axis plots in addition or in lieu of scatter plots
   - Allow user to select the x attributes shown in the scatter plots   
   - Multi level radial visualization to shown patterns over different time scales (e.g., annual, weekly, and daily)
-  - Improve viewing in smaller windows and potentially mobile devices. Issues to be addressed include:
-    - scaling of elements, including tick text, axis labels, mark (i.e., line/=or point) size, mark opacity
-    - layout of chart (e.g., layout is  altered based on device viewport and/or physical size).
+  - Rework layout to improve viewing in smaller windows and potentially mobile devices. Potential changes  to be considered include:
+    - Improve scaling of elements, including tick text, axis labels, mark (i.e., line/=or point) size, mark opacity
+    - Move all interaction UI elements, including brush for over line chart to top of page.
+    - Keep UI elements on screen while user scrolls through plots
+    - Rotate layout of radial time and scatter plots so that each user type is arranged in a vertical column, and each chart type is a horizontal row.
+    - Change layout of visualization based on device viewport and/or physical size.
 
 
 ## sources and inspiration
