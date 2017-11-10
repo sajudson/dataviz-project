@@ -11,12 +11,12 @@ This is an exploratory visualization for bike share system data. It is intended 
 The techniques shown here can be applied to other multivariate time series data sets.
 
 
-![Layout](/images/visonLoadfinal.png)
+![Layout](/images/visOnLoadFinal.png)
 
 
 # The Data
 ## Capital Bike Share System Data
-![Layout](images/CaBi-logo_red.svg)
+
 This data set is from the Capital Bike Share system and covers a two year period between Jan 2011 and Dec 2012. The data set contains the following attributes:
   - Date and Time:
     - Date (year/month/day) and hour (continuous/temporal).
@@ -99,7 +99,7 @@ The final version of the visualization, shown below, follows the same basic layo
 - A group of toggle switch UI elements to control the filters for year, day type and weather situation appear in a row above the charts, and
 - A one dimensional brush appears the third row as part of the overview chart respectively.
 
-![Layout](/images/visonLoadfinal.png)
+![Layout](/images/visOnLoadFinal.png)
 
 
 
@@ -137,7 +137,7 @@ The scatter plots are used to look for potential casual relationships between we
 ### Final
 The final version of the scatter plots is essentially unchanged from the prototype, with minor changes to point size and opacity.
 
-![Scatter Plots](/images/visscatterfinal.png)
+![Scatter Plots](/images/visScatterFinal.png)
 
 
 ## Line chart overview with brush
@@ -154,7 +154,7 @@ The prototype shows the casual and registered users as well as apparent temperat
 ### Final
 The final version  of the time series line chart (illustrated by the three chart sequence for registered users below) shows only the total number of users. This approach was chosen to make it easier to understand the overview chart, and because this information is not provided in any other chart.
 
-![Line Chart Overview with Brush](/images/vislinechartoverviewfinal.png)
+![Line Chart Overview with Brush](/images/visLineChartOverviewFinal.png)
 
 
 # The Interactions
@@ -165,17 +165,17 @@ The visualization uses three different and complementary interactions:
 
 Filtering by categorical variables (shown below) uses the  filter toggle switches at the top of page to select which data will be shown (toggle enable = green) and which will be hidden (toggle disabled = white). This enables the user to compare the impact of the these variables on the patterns and relationships shown in the detailed charts.
 
-![Filters Applied](/images/visfilteredfinal.png)
+![Filters Applied](/images/visFilteredFinal.png)
 
 The date range selection (shown below) uses the brush in the overview chart - dragging and dropping the edges of the brush filters out the data that is outside of the brush.
 
-![Brush Applied for Date Selection](/images/visbrushfinal.png)
+![Brush Applied for Date Selection](/images/visBrushFinal.png)
 
 
 Once a date range has been selected, dragging any point inside the brush allows the user to change the starting date of the data displayed in the detailed charts while leaving the duration of the date range unchanged. This allows the user to pan throughout the entire data range and see how patterns change over time.  
 
 The filters and brush elements can also be used together to apply the filters to specific date ranges selected by the brush (show below):
-![Filter & Brush Applied](/images/visfilteredbrushfinal.png)
+![Filter & Brush Applied](/images/visFilteredBrushFal.png)
 
 
 # Additional Information...
