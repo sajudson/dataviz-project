@@ -15,9 +15,9 @@ export default function (data, props) {
 
   //console.log("applyFilter")
   //console.log(dateRange,
-    year2011Filter,year2012Filter,
-    dayTypeWorkingFilter,dayTypeNonWorkingFilter,
-    weatherSit1Filter,weatherSit2Filter,weatherSit3Filter, unfilteredOpacity)
+  // year2011Filter,year2012Filter,
+  // dayTypeWorkingFilter,dayTypeNonWorkingFilter,
+  // weatherSit1Filter,weatherSit2Filter,weatherSit3Filter, unfilteredOpacity)
 
   //reset filters
   data.forEach(d=>d.filterOpacity=unfilteredOpacity);

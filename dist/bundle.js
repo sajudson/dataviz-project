@@ -72,10 +72,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scatterPlot__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__linePlot__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__radialPlot__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__radialPlot2__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__applyFilter__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__filterData__ = __webpack_require__(6);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyFilter__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__filterData__ = __webpack_require__(5);
 
 
 
@@ -229,12 +227,6 @@ d3.csv('data/hour.csv', row1, data => {
         };
 
       dataDay = unnest(nestbyday, "value");
-      //console.log(dataDay);
-
-      // startDate = d3.min(dataDay, d=>d.dteDay);
-      // endDate = d3.max(dataDay, d=>d.dteDay);
-      console.log(dataHour)
-      console.log(dataDay)
 
 //render function for all visualizations
   function render1(){
@@ -245,7 +237,7 @@ d3.csv('data/hour.csv', row1, data => {
 
     //set defaultOpacity
     let unfilteredOpacity = .25;
-    Object(__WEBPACK_IMPORTED_MODULE_4__applyFilter__["a" /* default */])(dataHour,{
+    Object(__WEBPACK_IMPORTED_MODULE_3__applyFilter__["a" /* default */])(dataHour,{
       dateRange,
       year2011Filter,
       year2012Filter,
@@ -257,7 +249,7 @@ d3.csv('data/hour.csv', row1, data => {
       unfilteredOpacity
     });
 
-    Object(__WEBPACK_IMPORTED_MODULE_4__applyFilter__["a" /* default */])(dataDay,{
+    Object(__WEBPACK_IMPORTED_MODULE_3__applyFilter__["a" /* default */])(dataDay,{
       dateRange,
       year2011Filter,
       year2012Filter,
@@ -269,7 +261,7 @@ d3.csv('data/hour.csv', row1, data => {
       unfilteredOpacity
     });
 
-    const dataHourFiltered = Object(__WEBPACK_IMPORTED_MODULE_5__filterData__["a" /* default */])(dataHour,{
+    const dataHourFiltered = Object(__WEBPACK_IMPORTED_MODULE_4__filterData__["a" /* default */])(dataHour,{
       dateRange,
       year2011Filter,
       year2012Filter,
@@ -310,7 +302,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div1")
 
     Object(__WEBPACK_IMPORTED_MODULE_0__scatterPlot__["a" /* default */])(div2, {
       data:dataDay, //Filtered,
@@ -324,7 +315,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div2")
 
     Object(__WEBPACK_IMPORTED_MODULE_0__scatterPlot__["a" /* default */])(div3, {
       data:dataDay, //Filtered,
@@ -338,7 +328,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div3")
 
     Object(__WEBPACK_IMPORTED_MODULE_2__radialPlot__["a" /* default */])(div4, {
       data:dataHourFiltered,
@@ -349,7 +338,6 @@ d3.csv('data/hour.csv', row1, data => {
       margin:margin
     });
 
-    console.log("div4")
 
     //second row of grid
     Object(__WEBPACK_IMPORTED_MODULE_0__scatterPlot__["a" /* default */])(div5, {
@@ -364,7 +352,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div5")
 
     Object(__WEBPACK_IMPORTED_MODULE_0__scatterPlot__["a" /* default */])(div6, {
       data:dataDay, //Filtered,
@@ -378,7 +365,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div6")
 
     Object(__WEBPACK_IMPORTED_MODULE_0__scatterPlot__["a" /* default */])(div7, {
       data:dataDay, //Filtered,
@@ -392,7 +378,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div7")
 
     Object(__WEBPACK_IMPORTED_MODULE_2__radialPlot__["a" /* default */])(div8, {
       data:dataHourFiltered,
@@ -403,28 +388,13 @@ d3.csv('data/hour.csv', row1, data => {
       margin:margin
     });
 
-    console.log("div8")
-    // console.log("calling line plot with date range:"+dateRange)
-    // linePlot(div9, {
-    //   data:dataDay,
-    //   xValue:xValue4,
-    //   yValue1:yValue1,
-    //   yValue2:yValue2,
-    //   xLabel:xLabel4,
-    //   yLabel:"Users",
-    //   colorValue:pointColor2,
-    //   pointSize:pointSize,
-    //   margin:margin,
-    //   brushDateRange:dateRange,
-    //   onBrush:onBrush
-    // });
 
 
   };
 
   function render2(){
 
-    console.log("calling line plot with date range:"+dateRange)
+    //console.log("calling line plot with date range:"+dateRange)
     Object(__WEBPACK_IMPORTED_MODULE_1__linePlot__["a" /* default */])(div9, {
       data:dataDay,
       xValue:xValue4,
@@ -459,7 +429,7 @@ d3.csv('data/hour.csv', row1, data => {
 
 function onBrush(dateFromTo){
     dateRange = dateFromTo;
-    console.log(dateRange);
+    //console.log(dateRange);
     render1();
   };
 
@@ -468,44 +438,44 @@ $(function() {
 
   	$('#year2011').change(function() {
       year2011Filter = $(this).prop('checked');
-      console.log(year2011Filter);
+      //console.log(year2011Filter);
       render1()
     });
 
     $('#year2012').change(function() {
       year2012Filter = $(this).prop('checked');
-      console.log(year2012Filter);
+      //console.log(year2012Filter);
       render1()
 		});
 
     $('#dayTypeWorking').change(function() {
       dayTypeWorkingFilter = $(this).prop('checked');
-      console.log(dayTypeWorkingFilter);
+      //console.log(dayTypeWorkingFilter);
       render1()
     });
 
 
     $('#dayTypeNonWorking').change(function() {
       dayTypeNonWorkingFilter = $(this).prop('checked');
-      console.log(dayTypeNonWorkingFilter);
+      //console.log(dayTypeNonWorkingFilter);
       render1()
     });
 
     $('#weatherSit1').change(function() {
       weatherSit1Filter = $(this).prop('checked');
-      console.log(weatherSit1Filter);
+      //console.log(weatherSit1Filter);
       render1()
     });
 
      $('#weatherSit2').change(function() {
       weatherSit2Filter = $(this).prop('checked') ;
-      console.log(weatherSit2Filter);
+      //console.log(weatherSit2Filter);
       render1()
     });
 
       $('#weatherSit3').change(function() {
       weatherSit3Filter = $(this).prop('checked');
-      console.log(weatherSit1Filter);
+      //console.log(weatherSit1Filter);
       render1()
     });
 });
@@ -553,7 +523,7 @@ const colorLegend = d3.legendColor()
     filterValue
   } = props;
 
- console.log(data);
+ //console.log(data);
 
   var vizDiv = document.getElementById(div);
   var svg = d3.select(vizDiv)
@@ -720,7 +690,7 @@ const yAxis = d3.axisLeft()
     onBrush
   } = props;
 
-  console.log(minDate, maxDate, d3.extent(data, xValue))
+  //console.log(minDate, maxDate, d3.extent(data, xValue))
 
   var vizDiv = document.getElementById(div);
   var svg = d3.select(vizDiv)
@@ -765,6 +735,16 @@ const yAxis = d3.axisLeft()
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right*4;
 
+  var brush = d3.brushX()
+      .extent([[0,0], [width, innerHeight]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
+      .on("brush end", brushed);
+
+
+  function brushed() {
+      var s = d3.event.selection || xScale.range();
+      var dateRange=s.map(xScale.invert, xScale);
+      props.onBrush(dateRange);
+  };
   xScale
     .domain([minDate,maxDate]) //[minDate,maxDate] or d3.extent(data, xValue)
     .range([0, innerWidth])
@@ -824,7 +804,7 @@ b.merge(bEnter)
 
 const curveFunction = d3.curveCatmullRom
 
-const lineRegistered = d3.line()
+const lineTotal = d3.line()
   .x(d => xScale(xValue(d)))
   .y(d => yScale(yValue3(d)))
   .curve(curveFunction);
@@ -848,7 +828,7 @@ userLines;
     .attr('stroke', 'red')
     .attr('stroke-width', 1)
     .merge(userLines)
-    .attr('d', lineRegistered(data));
+    .attr('d', lineTotal(data));
 
 
   //call X and Y axis
@@ -988,7 +968,7 @@ const radialOffset = 0 //.25*Math.PI
     .enter().append('text')
       .attr('class','r-axis-text')
       .attr('font-size','5pt')
-      .attr("transform", "rotate(75)")
+      .attr("transform", "rotate(67.5)")
       .style("text-anchor", "middle")
     .merge(rAxisText)
       .attr("y", function(d) { return -rScale(d) - 2; })
@@ -1100,216 +1080,40 @@ const radialOffset = 0 //.25*Math.PI
 "use strict";
 
 
-const colorScale = d3.scaleOrdinal()
-  .range(d3.schemeCategory10);
-
-const radialOffset = 0 //.25*Math.PI
-
-/* unused harmony default export */ var _unused_webpack_default_export = (function (div, props) {
+/* harmony default export */ __webpack_exports__["a"] = (function (data, props) {
   const {
-    data,
-    hour,
-    yValue,
-    yLabel,
-    colorValue,
-    margin
+    dateRange,
+    year2011Filter,
+    year2012Filter,
+    dayTypeWorkingFilter,
+    dayTypeNonWorkingFilter,
+    weatherSit1Filter,
+    weatherSit2Filter,
+    weatherSit3Filter,
+    unfilteredOpacity
   } = props;
 
-var vizDiv = document.getElementById(div);
-var svg = d3.select(vizDiv)
-  .selectAll('svg')
-  .data([null]);
+  //console.log("applyFilter")
+  //console.log(dateRange,
+  // year2011Filter,year2012Filter,
+  // dayTypeWorkingFilter,dayTypeNonWorkingFilter,
+  // weatherSit1Filter,weatherSit2Filter,weatherSit3Filter, unfilteredOpacity)
 
-const width = vizDiv.offsetWidth;
-const height = vizDiv.offsetHeight;
-
-// console.log(`radial plot ${width}, ${height}`)
-
-//maintain 1:1 aspect ration for scatter plot
-const minDimension = d3.min([width, height]);
-
-// console.log(`radial plot- min dimension ${width}, ${height}`)
-
-var svgEnter = svg
-  .enter()
-  .append('svg');
-
-//set svg size to window
-svg = svgEnter
-  .merge(svg)
-  .attr('width',minDimension)
-  .attr('height',minDimension);
-
-
-//console.log(width, height, minDimension);
-//console.log(svg.attr('width'), svg.attr('height'));
-
-const innerHeight = minDimension - margin.top - margin.bottom;
-const innerWidth = minDimension - margin.left - margin.right;
-const rScaleMax = innerHeight/2
-const rMax = 1000
-
-// console.log(`radial plot iH/iW/rSM/rM${innerWidth}, ${innerHeight},${rScaleMax},${rMax}`)
-
-// g object for main plot
-let g = svg.selectAll('.radialChartGroup').data([null]);
-
-  g = g.enter().append('g')
-    .attr('class', 'radialChartGroup')
-    .merge(g)
-    .attr('transform',
-   				`translate(${innerWidth/2+margin.left},
-										 ${innerHeight/2+margin.top})`);
-
- // angular and radial tick marks need to be tied to different g
- //objects. If same g object used for both, if you have r radial
- //tick lines and a angular tick lines, only a-r angular tick
- //lines will plot. first five will be undefined
-
-//g object for radial tick lines and labels
-let gr = svg.selectAll('g').data([null]);
-
- gr = gr.enter().append('g')
-   .merge(gr)
-   .attr('transform',
-  				`translate(${innerWidth/2+margin.left},
-										 ${innerHeight/2+margin.top})`);
-
-const grExit = gr.exit().remove();
-//g object for angular tick lines and labels
-
-let ga = svg.selectAll('#a-axis-g').data([null]);
-
-
-ga = ga.enter().append('g')
-    .merge(ga)
-    .attr('id','a-axis-g')
-    .attr('transform',
-   				`translate(${innerWidth/2+margin.left},
- 										 ${innerHeight/2+margin.top})`);
-
-//set up to draw ticklines
-const xTickLength = rScaleMax;
-const numTicks =8;
-const xTickAngle =360/numTicks;
-const xTickLabelMultiplier = 2400/numTicks
-const rScale = d3.scaleLinear()
-const aScale = d3.scaleLinear()
-
-// console.log(`xTickLength ${xTickLength}, numTicks${numTicks},xTickAngle ${xTickAngle}, xTickLabelMultiplier ${xTickLabelMultiplier}`)
-
-rScale
-  .domain([0,rMax])
-  .range([0,rScaleMax]);
-
-const rScaleTicks = rScale.ticks(5).slice(1);
-
-// console.log(`rScaleTicks ${rScaleTicks}`)
-//drawing radial tick lines
-
-var rAxisG = gr.selectAll('#r-axis-g').data([null]);
-
-rAxisG = rAxisG
-  .data(rScale.ticks(5).slice(1))
-  .enter().append('g').merge(rAxisG)
-	.attr('id','#r-axis-g');
-
-// rAxisGExit;
-
-var rAxisTicks = gr.selectAll('#r-axis-ticks').data([null]);
-
-rAxisTicks=rAxisTicks
-  .data(rScale.ticks(5).slice(1))
-  .enter().append('circle').merge(rAxisTicks)
-  .attr('class','r-axis-g axis circle')
-  .attr('id', 'r-axis-tick')
-  .append('circle')
-	.attr("r",rScale);
-
-var rAxisText = gr.selectAll('#r-axis-text').data([null]);
-
-rAxisText =rAxisText
-  .data(rScale.ticks(5).slice(1))
-  .enter().append('text').merge(rAxisText)
-  .attr('class','r-axis-g tick')
-  .attr('id', 'r-axis-text')
-  .attr("y", function(d) { return -rScale(d) + 10; })
-  .attr("transform", "rotate(22.5)")
-  .style("text-anchor", "middle")
-  .text(function(d) { return d; });
-
-var aAxisG = gr.selectAll('#a-axis-g').data([null]);
-
-aAxisG = aAxisG
-    .data(d3.range(0, 360, xTickAngle))
-    .enter().append("g").merge(aAxisG)
-    .attr('id', 'a-axis-g')
-    .attr('class', 'axis tick')
-    .attr("transform", function(d) { return "rotate(" + d + ")"; });
-
-aAxisG
-    .append("line")
-    .attr("x2", rScaleMax);
-
-
-var aAxisText = gr.selectAll('#a-axis-text').data([null]);
-// these do no appear in the dom at all
-aAxisText = aAxisG
-    .data(d3.range(0, 360, xTickAngle))
-    .enter().append("text").merge(aAxisText)
-    .attr('id','a-axis-text')
-    .attr("x", rScaleMax + 6)
-    .attr("dy", ".35em")
-    .style("text-anchor", function(d) { return d < 270 && d > 90 ? "end" : null; })
-    .attr("transform", function(d) { return d < 270 && d > 90 ? "rotate(180 " + (rScaleMax + 6) + ",0)" : null; })
-    .text(function(d,i) { return i*xTickLabelMultiplier + "h"; });
-
-
-
-//d.hr variable is hardcoded for time being
-// waiting until other issues debugged
-const angleHours = d => (d.hr/24 *Math.PI*2+ radialOffset);
-//
-console.log(`angleHours ${angleHours}`)
-
-// CatmullRom curve selected because it
-// it passes through all points and
-// has less overshoot that others
-const curveFunction = d3.curveCatmullRom
-
-
-//refactored code for aScale
-// aScale
-//   .domain(d3.extent(data,hour))
-//   .range([0,Math.PI*2]);
-
-const radialPath = d3.lineRadial()
-  .angle(d => angleHours(d))
-  .radius(d => rScale(yValue(d)))
-  .curve(curveFunction);
-
-
-var radialLines = g.selectAll('path').data([null]);
-var radialLinesEnter = radialLines.enter().append('path');
-var radialLinesExit = radialLines.exit().remove();
-
-//UPDATE old elements present (change class)
-radialLines
-  .attr('class','update');
-
-//merge new and existing ell
-radialLinesEnter
-  .attr('class','enter')
-  .attr('fill', 'none')
-  .attr('stroke', colorValue)
-  .attr('stroke-opacity', 0.7)
-  .attr('stroke-width', .25)
-  .merge(radialLines)
-  .attr('d', radialPath(data));
-
-//remove elements for which there is no data
-radialLinesExit;
-// console.log('radialLinesExit')
+  //reset filters
+  data.forEach(d=>d.filterOpacity=unfilteredOpacity);
+  //console.log(dateRange)
+  //apply filters to data set based on state of toggle buttons on screen
+  data.forEach(d =>{
+      if(d.dteday<dateRange[0] || d.dteday>dateRange[1]) {d.filterOpacity=0.0}
+      if(d.yr==0 && year2011Filter==false) {d.filterOpacity=0.0}
+      else if(d.yr==1 && year2012Filter==false) {d.filterOpacity=0.0}
+      else if(d.workingday==1 && dayTypeWorkingFilter==false) {d.filterOpacity=0.0}
+      else if(d.workingday==0 && dayTypeNonWorkingFilter==false) {d.filterOpacity=0.0}
+      else if(d.weathersit==1 && weatherSit1Filter==false) {d.filterOpacity=0.0}
+      else if(d.weathersit==2 && weatherSit2Filter==false) {d.filterOpacity=0.0}
+      else if(d.weathersit==3 && weatherSit3Filter==false) {d.filterOpacity=0.0}
+      });
+  //console.log(data);
 });;
 
 
@@ -1333,51 +1137,7 @@ radialLinesExit;
     unfilteredOpacity
   } = props;
 
-  console.log("applyFilter")
-  console.log(dateRange,
-    year2011Filter,year2012Filter,
-    dayTypeWorkingFilter,dayTypeNonWorkingFilter,
-    weatherSit1Filter,weatherSit2Filter,weatherSit3Filter, unfilteredOpacity)
-
-  //reset filters
-  data.forEach(d=>d.filterOpacity=unfilteredOpacity);
-  console.log(dateRange)
-  //apply filters to data set based on state of toggle buttons on screen
-  data.forEach(d =>{
-      if(d.dteday<dateRange[0] || d.dteday>dateRange[1]) {d.filterOpacity=0.0}
-      if(d.yr==0 && year2011Filter==false) {d.filterOpacity=0.0}
-      else if(d.yr==1 && year2012Filter==false) {d.filterOpacity=0.0}
-      else if(d.workingday==1 && dayTypeWorkingFilter==false) {d.filterOpacity=0.0}
-      else if(d.workingday==0 && dayTypeNonWorkingFilter==false) {d.filterOpacity=0.0}
-      else if(d.weathersit==1 && weatherSit1Filter==false) {d.filterOpacity=0.0}
-      else if(d.weathersit==2 && weatherSit2Filter==false) {d.filterOpacity=0.0}
-      else if(d.weathersit==3 && weatherSit3Filter==false) {d.filterOpacity=0.0}
-      });
-  //console.log(data);
-});;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-
-/* harmony default export */ __webpack_exports__["a"] = (function (data, props) {
-  const {
-    dateRange,
-    year2011Filter,
-    year2012Filter,
-    dayTypeWorkingFilter,
-    dayTypeNonWorkingFilter,
-    weatherSit1Filter,
-    weatherSit2Filter,
-    weatherSit3Filter,
-    unfilteredOpacity
-  } = props;
-
-  console.log("filterData executing...")
+  //console.log("filterData executing...")
 
 
     //apply filters to data set based on state of toggle buttons on screen

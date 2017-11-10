@@ -84,6 +84,16 @@ export default function (div, props) {
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right*4;
 
+  var brush = d3.brushX()
+      .extent([[0,0], [width, innerHeight]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
+      .on("brush end", brushed);
+
+
+  function brushed() {
+      var s = d3.event.selection || xScale.range();
+      var dateRange=s.map(xScale.invert, xScale);
+      props.onBrush(dateRange);
+  };
   xScale
     .domain([minDate,maxDate]) //[minDate,maxDate] or d3.extent(data, xValue)
     .range([0, innerWidth])
@@ -143,7 +153,7 @@ b.merge(bEnter)
 
 const curveFunction = d3.curveCatmullRom
 
-const lineRegistered = d3.line()
+const lineTotal = d3.line()
   .x(d => xScale(xValue(d)))
   .y(d => yScale(yValue3(d)))
   .curve(curveFunction);
@@ -167,7 +177,7 @@ userLines;
     .attr('stroke', 'red')
     .attr('stroke-width', 1)
     .merge(userLines)
-    .attr('d', lineRegistered(data));
+    .attr('d', lineTotal(data));
 
 
   //call X and Y axis

@@ -1,7 +1,6 @@
 import scatterPlot from './scatterPlot'
 import linePlot from './linePlot'
 import radialPlot from './radialPlot'
-import radialPlot2 from './radialPlot2'
 import applyFilter from './applyFilter'
 import filterData from './filterData'
 
