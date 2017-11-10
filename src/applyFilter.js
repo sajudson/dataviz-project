@@ -13,15 +13,15 @@ export default function (data, props) {
     unfilteredOpacity
   } = props;
 
-  console.log("applyFilter")
-  console.log(dateRange,
+  //console.log("applyFilter")
+  //console.log(dateRange,
     year2011Filter,year2012Filter,
     dayTypeWorkingFilter,dayTypeNonWorkingFilter,
     weatherSit1Filter,weatherSit2Filter,weatherSit3Filter, unfilteredOpacity)
 
   //reset filters
   data.forEach(d=>d.filterOpacity=unfilteredOpacity);
-  console.log(dateRange)
+  //console.log(dateRange)
   //apply filters to data set based on state of toggle buttons on screen
   data.forEach(d =>{
       if(d.dteday<dateRange[0] || d.dteday>dateRange[1]) {d.filterOpacity=0.0}

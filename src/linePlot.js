@@ -39,7 +39,7 @@ export default function (div, props) {
     onBrush
   } = props;
 
-  console.log(minDate, maxDate, d3.extent(data, xValue))
+  //console.log(minDate, maxDate, d3.extent(data, xValue))
 
   var vizDiv = document.getElementById(div);
   var svg = d3.select(vizDiv)

@@ -152,12 +152,6 @@ d3.csv('data/hour.csv', row1, data => {
         };
 
       dataDay = unnest(nestbyday, "value");
-      //console.log(dataDay);
-
-      // startDate = d3.min(dataDay, d=>d.dteDay);
-      // endDate = d3.max(dataDay, d=>d.dteDay);
-      console.log(dataHour)
-      console.log(dataDay)
 
 //render function for all visualizations
   function render1(){
@@ -233,7 +227,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div1")
 
     scatterPlot(div2, {
       data:dataDay, //Filtered,
@@ -247,7 +240,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div2")
 
     scatterPlot(div3, {
       data:dataDay, //Filtered,
@@ -261,7 +253,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div3")
 
     radialPlot(div4, {
       data:dataHourFiltered,
@@ -272,7 +263,6 @@ d3.csv('data/hour.csv', row1, data => {
       margin:margin
     });
 
-    console.log("div4")
 
     //second row of grid
     scatterPlot(div5, {
@@ -287,7 +277,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div5")
 
     scatterPlot(div6, {
       data:dataDay, //Filtered,
@@ -301,7 +290,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div6")
 
     scatterPlot(div7, {
       data:dataDay, //Filtered,
@@ -315,7 +303,6 @@ d3.csv('data/hour.csv', row1, data => {
       filterValue:filterValue
     });
 
-    console.log("div7")
 
     radialPlot(div8, {
       data:dataHourFiltered,
@@ -326,28 +313,13 @@ d3.csv('data/hour.csv', row1, data => {
       margin:margin
     });
 
-    console.log("div8")
-    // console.log("calling line plot with date range:"+dateRange)
-    // linePlot(div9, {
-    //   data:dataDay,
-    //   xValue:xValue4,
-    //   yValue1:yValue1,
-    //   yValue2:yValue2,
-    //   xLabel:xLabel4,
-    //   yLabel:"Users",
-    //   colorValue:pointColor2,
-    //   pointSize:pointSize,
-    //   margin:margin,
-    //   brushDateRange:dateRange,
-    //   onBrush:onBrush
-    // });
 
 
   };
 
   function render2(){
 
-    console.log("calling line plot with date range:"+dateRange)
+    //console.log("calling line plot with date range:"+dateRange)
     linePlot(div9, {
       data:dataDay,
       xValue:xValue4,
@@ -382,7 +354,7 @@ d3.csv('data/hour.csv', row1, data => {
 
 function onBrush(dateFromTo){
     dateRange = dateFromTo;
-    console.log(dateRange);
+    //console.log(dateRange);
     render1();
   };
 
@@ -391,44 +363,44 @@ $(function() {
 
   	$('#year2011').change(function() {
       year2011Filter = $(this).prop('checked');
-      console.log(year2011Filter);
+      //console.log(year2011Filter);
       render1()
     });
 
     $('#year2012').change(function() {
       year2012Filter = $(this).prop('checked');
-      console.log(year2012Filter);
+      //console.log(year2012Filter);
       render1()
 		});
 
     $('#dayTypeWorking').change(function() {
       dayTypeWorkingFilter = $(this).prop('checked');
-      console.log(dayTypeWorkingFilter);
+      //console.log(dayTypeWorkingFilter);
       render1()
     });
 
 
     $('#dayTypeNonWorking').change(function() {
       dayTypeNonWorkingFilter = $(this).prop('checked');
-      console.log(dayTypeNonWorkingFilter);
+      //console.log(dayTypeNonWorkingFilter);
       render1()
     });
 
     $('#weatherSit1').change(function() {
       weatherSit1Filter = $(this).prop('checked');
-      console.log(weatherSit1Filter);
+      //console.log(weatherSit1Filter);
       render1()
     });
 
      $('#weatherSit2').change(function() {
       weatherSit2Filter = $(this).prop('checked') ;
-      console.log(weatherSit2Filter);
+      //console.log(weatherSit2Filter);
       render1()
     });
 
       $('#weatherSit3').change(function() {
       weatherSit3Filter = $(this).prop('checked');
-      console.log(weatherSit1Filter);
+      //console.log(weatherSit1Filter);
       render1()
     });
 });

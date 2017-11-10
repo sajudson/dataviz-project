@@ -121,8 +121,8 @@ export default function (div, props) {
     .data(rScaleTicks)
     .enter().append('text')
       .attr('class','r-axis-text')
-      .attr('font-size','4pt')
-      .attr("transform", "rotate(22.5)")
+      .attr('font-size','5pt')
+      .attr("transform", "rotate(67.5)")
       .style("text-anchor", "middle")
     .merge(rAxisText)
       .attr("y", function(d) { return -rScale(d) - 2; })
@@ -142,7 +142,7 @@ export default function (div, props) {
         .attr('class', 'a-axis-g')
       .merge(aAxisG)
         .attr("transform", function(d) { return "rotate(" + d + ")"; });
-        
+
   aAxisG
       .append("line")
       .attr('class', 'a-axis-g tick')
@@ -179,13 +179,17 @@ export default function (div, props) {
 
   //d.hr variable is hardcoded for time being
   // waiting until other issues debugged
-  const angleHours = d => (d.hr/24 *Math.PI*2+ radialOffset);
-  console.log(`angleHours ${angleHours}`)
+  aScale
+    .domain([0,24])
+    .range([.5*Math.PI,2.5*Math.PI]);
+
+
 
   // CatmullRom curve selected because it
   // it passes through all points and
   // has less overshoot that others
-  const curveFunction = d3.curveCatmullRom
+  //const curveFunction = d3.curveCatmullRom
+  const curveFunction = d3.curveLinear
 
 
   //refactored code for aScale
@@ -194,7 +198,7 @@ export default function (div, props) {
   //   .range([0,Math.PI*2]);
 
   const radialPath = d3.lineRadial()
-    .angle(d => angleHours(d))
+    .angle(d => aScale(hour(d)))
     .radius(d => rScale(yValue(d)))
     .curve(curveFunction);
 

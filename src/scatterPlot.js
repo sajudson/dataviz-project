@@ -34,7 +34,7 @@ export default function (div, props) {
     filterValue
   } = props;
 
- console.log(data);
+ //console.log(data);
 
   var vizDiv = document.getElementById(div);
   var svg = d3.select(vizDiv)

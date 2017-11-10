@@ -13,7 +13,7 @@ export default function (data, props) {
     unfilteredOpacity
   } = props;
 
-  console.log("filterData executing...")
+  //console.log("filterData executing...")
 
 
     //apply filters to data set based on state of toggle buttons on screen
