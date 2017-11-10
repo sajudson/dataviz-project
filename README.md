@@ -116,7 +116,6 @@ The prototype plot was revised after the prototype layout was completed, with th
 
 ### Final
 In the final version, the plots were calibrated to align with the hourly tick marks and separate plots were used for each user type.
-![Radial Plots](/images/visRadialTSCasRegFinal.png)
 
 ![Radial Plots Registered](/images/visRadialTSRegFinal.png)
 ![Radial Plots Casual](/images/visRadialTSCasFinal.png)
