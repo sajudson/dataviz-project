@@ -7,12 +7,14 @@ const colorScale = d3.scaleOrdinal()
 
 const xAxis = d3.axisBottom()
   .scale(xScale)
+  .ticks(5)
   .tickPadding(10)
   .tickFormat(d3.format('0'))
   .tickSize(-innerHeight);
 
 const yAxis = d3.axisLeft()
   .scale(yScale)
+  .ticks(5)
   .tickFormat(d3.format('.2s'))
   .tickPadding(10)
   .tickSize(-innerWidth);

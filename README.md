@@ -1,12 +1,12 @@
 
+
+
+![Layout](images/CaBi-logo_red.svg)
 Live Version (hosted on Github Pages):https://sajudson.github.io/dataviz-project/
 
-Video: PENDING
+Video: PENDING# Introduction
 
-
-# Introduction
-
-This is an exploratory visualization for a bike share system that is intended to assist in determining which factors  influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
+This is an exploratory visualization for bike share system data. It is intended to assist in determining which factors  influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
 
 The techniques shown here can be applied to other multivariate time series data sets.
 
@@ -16,8 +16,8 @@ The techniques shown here can be applied to other multivariate time series data 
 
 # The Data
 ## Capital Bike Share System Data
-
-This data set is from the Washington DC Bike Share system and covers a two year period between Jan 2011 and Dec 2012. The data set contains the following attributes:
+![Layout](images/CaBi-logo_red.svg)
+This data set is from the Capital Bike Share system and covers a two year period between Jan 2011 and Dec 2012. The data set contains the following attributes:
   - Date and Time:
     - Date (year/month/day) and hour (continuous/temporal).
     - Derived attributes:
@@ -118,6 +118,8 @@ The prototype plot was revised after the prototype layout was completed, with th
 In the final version, the plots were calibrated to align with the hourly tick marks and separate plots were used for each user type.
 ![Radial Plots](/images/visRadialTSCasRegFinal.png)
 
+![Radial Plots Registered](/images/visRadialTSRegFinal.png)
+![Radial Plots Casual](/images/visRadialTSCasFinal.png)
 
 
 
