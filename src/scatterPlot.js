@@ -64,6 +64,9 @@ export default function (div, props) {
   const innerHeight = minDimension - margin.top - margin.bottom;
   const innerWidth = minDimension - margin.left - margin.right;
 
+  console.log("scatter chart w x h" + width+' x ' +height)
+  console.log("scatter chart inner w x h" + innerWidth+' x ' +innerHeight)
+
 
   xScale
     .domain(d3.extent(data, xValue))

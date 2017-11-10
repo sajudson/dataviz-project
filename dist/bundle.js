@@ -131,7 +131,7 @@ console.log("start index.js");
       var weatherSit3Filter=true;
 
 
-      const margin = { left: 60, right: 10, top: 10, bottom: 60 };
+      const margin = { left: 55, right: 10, top: 10, bottom: 55 };
 
       //initialize these variables in the Global Scope
       //so they can be accessed by any function
@@ -553,6 +553,9 @@ const colorLegend = d3.legendColor()
   const innerHeight = minDimension - margin.top - margin.bottom;
   const innerWidth = minDimension - margin.left - margin.right;
 
+  console.log("scatter chart w x h" + width+' x ' +height)
+  console.log("scatter chart inner w x h" + innerWidth+' x ' +innerHeight)
+
 
   xScale
     .domain(d3.extent(data, xValue))
@@ -656,13 +659,13 @@ const minDate = new Date(2011,0,1)
 const maxDate = new Date(2012,11,31)
 
 
-const xTicks = 24
+const xTicks = 12
 const yTicks = 5
 
 const xAxis = d3.axisBottom()
   .scale(xScale)
-  .tickPadding(10)
-  .tickFormat(d3.timeFormat("%Y-%m-%d"))
+  .ticks(xTicks)
+  .tickPadding(10) //.tickFormat(d3.timeFormat("%Y-%m-%d"))
   .tickSize(-innerHeight);
 
 const yAxis = d3.axisLeft()
@@ -701,7 +704,6 @@ const yAxis = d3.axisLeft()
   const height = vizDiv.offsetHeight;
 
 
-
   var brush = d3.brushX()
       .extent([[0,0], [width, height]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
       .on("brush end", brushed);
@@ -732,8 +734,29 @@ const yAxis = d3.axisLeft()
       .merge(g)
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
+
+  const minDimension = d3.min([width/4, height]);
+  const rightMargin = 1/4 * width - minDimension - margin.left;
+
   const innerHeight = height - margin.top - margin.bottom;
-  const innerWidth = width - margin.left - margin.right*4;
+  const innerWidth = width - margin.left -rightMargin;
+  xScale
+    .domain([minDate,maxDate]) //[minDate,maxDate] or d3.extent(data, xValue)
+    .range([0, innerWidth])
+    .nice();
+
+  yScale
+    .domain(d3.extent(data, yValue3))
+    .range([innerHeight, 0])
+    .nice(yTicks);
+
+  console.log("minDimension:" + minDimension+', rightMargin:' +rightMargin)
+  console.log('xScale(0):'+xScale(0));
+  console.log('xScale(minDate):'+xScale(minDate));
+  console.log('xScale(maxDate):'+xScale(maxDate));
+  console.log('xScale(Date.now())):'+xScale(maxDate));
+  console.log("line chart w x h" + width+' x ' +height)
+  console.log("line chart inner w x h" + innerWidth+' x ' +innerHeight)
 
   var brush = d3.brushX()
       .extent([[0,0], [width, innerHeight]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
@@ -745,15 +768,7 @@ const yAxis = d3.axisLeft()
       var dateRange=s.map(xScale.invert, xScale);
       props.onBrush(dateRange);
   };
-  xScale
-    .domain([minDate,maxDate]) //[minDate,maxDate] or d3.extent(data, xValue)
-    .range([0, innerWidth])
-    .nice();
 
-  yScale
-    .domain(d3.extent(data, yValue3))
-    .range([innerHeight, 0])
-    .nice(yTicks);
 
   var xAxisG = g.selectAll('#x-axis-g').data([null]);
 
@@ -891,6 +906,10 @@ const radialOffset = 0 //.25*Math.PI
   const innerWidth = minDimension - margin.left - margin.right;
   const rScaleMax = innerHeight/2
   const rMax = 1000
+
+  console.log("radial chart w x h" + width+' x ' +height)
+  console.log("radial chart inner w x h" + innerWidth+' x ' +innerHeight)
+
   //console.log(`radial plot iH/iW/rSM/rM${innerWidth}, ${innerHeight},${rScaleMax},${rMax}`)
 
    // angular and radial tick marks need to be tied to different g
@@ -1062,14 +1081,14 @@ const radialOffset = 0 //.25*Math.PI
     .attr('class','enter')
     .attr('fill', 'none')
     .attr('stroke', colorValue)
-    .attr('stroke-opacity', 0.7)
+    .attr('stroke-opacity', 0.3)
     .attr('stroke-width', .25)
     .merge(radialLines)
     .attr('d', radialPath(data));
 
   //remove elements for which there is no data
   radialLinesExit;
-  console.log('radialLinesExit')
+  //console.log('radialLinesExit')
 });;
 
 

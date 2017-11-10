@@ -55,7 +55,7 @@ console.log("start index.js");
       var weatherSit3Filter=true;
 
 
-      const margin = { left: 60, right: 10, top: 10, bottom: 60 };
+      const margin = { left: 55, right: 10, top: 10, bottom: 55 };
 
       //initialize these variables in the Global Scope
       //so they can be accessed by any function

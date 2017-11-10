@@ -5,13 +5,13 @@ const minDate = new Date(2011,0,1)
 const maxDate = new Date(2012,11,31)
 
 
-const xTicks = 24
+const xTicks = 12
 const yTicks = 5
 
 const xAxis = d3.axisBottom()
   .scale(xScale)
-  .tickPadding(10)
-  .tickFormat(d3.timeFormat("%Y-%m-%d"))
+  .ticks(xTicks)
+  .tickPadding(10) //.tickFormat(d3.timeFormat("%Y-%m-%d"))
   .tickSize(-innerHeight);
 
 const yAxis = d3.axisLeft()
@@ -50,7 +50,6 @@ export default function (div, props) {
   const height = vizDiv.offsetHeight;
 
 
-
   var brush = d3.brushX()
       .extent([[0,0], [width, height]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
       .on("brush end", brushed);
@@ -81,8 +80,29 @@ export default function (div, props) {
       .merge(g)
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
+
+  const minDimension = d3.min([width/4, height]);
+  const rightMargin = 1/4 * width - minDimension - margin.left;
+
   const innerHeight = height - margin.top - margin.bottom;
-  const innerWidth = width - margin.left - margin.right*4;
+  const innerWidth = width - margin.left -rightMargin;
+  xScale
+    .domain([minDate,maxDate]) //[minDate,maxDate] or d3.extent(data, xValue)
+    .range([0, innerWidth])
+    .nice();
+
+  yScale
+    .domain(d3.extent(data, yValue3))
+    .range([innerHeight, 0])
+    .nice(yTicks);
+
+  console.log("minDimension:" + minDimension+', rightMargin:' +rightMargin)
+  console.log('xScale(0):'+xScale(0));
+  console.log('xScale(minDate):'+xScale(minDate));
+  console.log('xScale(maxDate):'+xScale(maxDate));
+  console.log('xScale(Date.now())):'+xScale(maxDate));
+  console.log("line chart w x h" + width+' x ' +height)
+  console.log("line chart inner w x h" + innerWidth+' x ' +innerHeight)
 
   var brush = d3.brushX()
       .extent([[0,0], [width, innerHeight]])       //.extent([[xScale(brushDateRange[0]), 0], [xScale(brushDateRange[1]), height]])
@@ -94,15 +114,7 @@ export default function (div, props) {
       var dateRange=s.map(xScale.invert, xScale);
       props.onBrush(dateRange);
   };
-  xScale
-    .domain([minDate,maxDate]) //[minDate,maxDate] or d3.extent(data, xValue)
-    .range([0, innerWidth])
-    .nice();
 
-  yScale
-    .domain(d3.extent(data, yValue3))
-    .range([innerHeight, 0])
-    .nice(yTicks);
 
   var xAxisG = g.selectAll('#x-axis-g').data([null]);
 

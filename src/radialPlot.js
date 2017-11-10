@@ -45,6 +45,10 @@ export default function (div, props) {
   const innerWidth = minDimension - margin.left - margin.right;
   const rScaleMax = innerHeight/2
   const rMax = 1000
+
+  console.log("radial chart w x h" + width+' x ' +height)
+  console.log("radial chart inner w x h" + innerWidth+' x ' +innerHeight)
+
   //console.log(`radial plot iH/iW/rSM/rM${innerWidth}, ${innerHeight},${rScaleMax},${rMax}`)
 
    // angular and radial tick marks need to be tied to different g
@@ -216,12 +220,12 @@ export default function (div, props) {
     .attr('class','enter')
     .attr('fill', 'none')
     .attr('stroke', colorValue)
-    .attr('stroke-opacity', 0.7)
+    .attr('stroke-opacity', 0.3)
     .attr('stroke-width', .25)
     .merge(radialLines)
     .attr('d', radialPath(data));
 
   //remove elements for which there is no data
   radialLinesExit;
-  console.log('radialLinesExit')
+  //console.log('radialLinesExit')
 };
