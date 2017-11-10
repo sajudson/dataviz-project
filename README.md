@@ -8,12 +8,10 @@ This is an exploratory visualization for a bike share system that is intended to
 
 <img width="1065" alt="finalvis" src="https://user-images.githubusercontent.com/13242061/32617171-4355080a-c542-11e7-8f37-cee2e72047d5.png">
 
-
-
 # The Data
 ## Washington DC Bike Sharing Data Set
 
-This data set covers a two year period between Jan 2011 and Dec 2012, and contains the following parameters:
+This data set is from the Washington DC Bike Share system and covers a two year period between Jan 2011 and Dec 2012. The data set contains the following attributes:
   - Date and Time:
     - Year, month, day, hour. (continuous/temporal, may be treated as ordinal or categorical in some cases)
     - Derived attributes: season (categorical), working day (categorical), holiday (categorical), day of week (ordinal).
@@ -23,15 +21,15 @@ This data set covers a two year period between Jan 2011 and Dec 2012, and contai
   - System users:
     - Casual, registered, and total user counts (continuous).
 
-  Raw temporal date and time variables are continuous, but year and month can also function as categorical attributes because of the limited number of unique values (2 and 12 respectively). The derived temporal values of season, working day, holiday and day of week were categorical attributes.
+  Raw temporal date and time variables are continuous, but year and month can also function as categorical attributes because of the limited number of unique values (2 and 12 respectively). The derived temporal values of season, working day, holiday and day of week were treated as  categorical attributes.
 
   All categorical variables were mapped to integers in the original data set.
 
-## Data Processing
-
-The dataset used from
+## Processing
 
 Hourly data was imported then aggregated into daily intervals, using mean values for all parameters except casual, registered, and total users (which were summed), and the weather situation, which used the maximum value observed for the day). All of the categorical values in the data set remained constant during a given day, except for weather situation. To maintain weather situation as a categorical attribute, the maximum value was used.
+
+## Source
 
 This data is from [UCI Machine Learning Repository: Bike Sharing Data Set](https://archive.ics.uci.edu/ml/datasets/bike+sharing+dataset)
 
@@ -43,7 +41,7 @@ The dataset file can be found [here](https://archive.ics.uci.edu/ml/machine-lear
 
 # The Design Intent
 
-## The Questions
+## Questions
 This visualization is intended to help answer the following questions:
   - What factors influence the number of casual and registered
  users of the bike share system?
@@ -62,7 +60,7 @@ The visualization was specifically designed to perform the following tasks:
 
 
 
-## The Idioms Used
+## Idioms
 The visualization makes use of two specific idioms - Multiple Views and Linked Navigation.
 
 The eight detailed charts are multiple views used to show commonalities and differences in the patterns between casual and registered users in the 8. The charts corresponding to each user type are grouped horizontally, with charts showing the same parameters aligned vertically. This arrangement allows easy comparison between the causal and registered user patterns and relationships within working memory.
@@ -166,8 +164,9 @@ The filters and brush elements can also be used together to apply the filters to
 
 <img width="1438" alt="visfilteredbrushfinal" src="https://user-images.githubusercontent.com/13242061/32616543-92130cfa-c540-11e7-8769-54c378d634be.png">
 
-# Additional Information
+# Additional Information...
 ## known bugs and limitations
+  - The tick labels need to be calibrated to align with the data (potentially related to time stamps being stored in UTC time format)
   - The toggles will allow all of the data to be filtered (i.e, not shown) on the chart.
   - The brush on the line chart overview and corresponding data filters are reset on window resizing (toggle filter settings persist on resize).
   - Line chart y ticks are not always redrawn correctly (ticks may be missing on the right side of the chart) when window is maximized.
