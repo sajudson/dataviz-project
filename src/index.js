@@ -34,8 +34,8 @@ console.log("start index.js");
       const yLabel3 = 'Users';
       const yLabel4 = xLabel1;
       const pointSize = 5;
-      const pointColor1 = "green";
-      const pointColor2 = "blue";
+      const pointColor1 = "red";
+      const pointColor2 = "orange";
       const pointColor3 = "grey";
       const filterValue = d => d.filterOpacity;
 
@@ -161,7 +161,7 @@ d3.csv('data/hour.csv', row1, data => {
     console.log('date range: '+ dateRange[0] +" to "+dateRange[1]);
 
     //set defaultOpacity
-    let unfilteredOpacity = .1;
+    let unfilteredOpacity = .2;
     applyFilter(dataHour,{
       dateRange,
       year2011Filter,

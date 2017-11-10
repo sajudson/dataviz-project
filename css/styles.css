@@ -1,6 +1,21 @@
 body {
   margin: 0px;
-}
+  font-family: 'Didact Gothic', sans-serif;;
+  font-size: 10px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+      font-family: 'Didact Gothic', sans-serif;
+      color: red;
+      font-size: 20px;
+  }
+  p, div {
+      font-family: 'Didact Gothic', sans-serif;;
+  }
+.marginRow{
+     margin-bottom:0px !important;
+     margin-top:0px !important;
+    }
 .domain {
   display: none;
 }
@@ -14,7 +29,7 @@ body {
 .long {
   display: inline-block;
   position: relative;
-  height: 25vmin;
+  height: 18vmin;
   width: 100vmin;}
 
 .tick line,

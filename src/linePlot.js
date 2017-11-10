@@ -186,7 +186,7 @@ userLines;
   //merge new and existing elements
   userLinesEnter
     .attr('fill','none')
-    .attr('stroke', 'red')
+    .attr('stroke', 'crimson')
     .attr('stroke-width', 1)
     .merge(userLines)
     .attr('d', lineTotal(data));
