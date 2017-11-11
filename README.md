@@ -1,15 +1,9 @@
-
-
-
-![Layout](images/CaBi-logo_red.svg)
+# Visualization of Multivariate Time Series Data
 Live Version (hosted on Github Pages):https://sajudson.github.io/dataviz-project/
 
-Video: PENDING# Introduction
+Video: PENDING
 
-This is an exploratory visualization for bike share system data. It is intended to assist in determining which factors  influence the number and type of users of the system at both daily and hourly intervals. It visualizes the impact of quantitative and qualitative attributes, including temperature, humidity and windspeed, day type, and weather conditions, on the number of daily and hour users.
-
-The techniques shown here can be applied to other multivariate time series data sets.
-
+This is an exploratory visualization for multivariate time series data, using bike share system data as an example. It is intended to assist in determining which factors influence the  dependent variables (e.g., the number and type of users of the system) at different time scales (e.g., daily and hourly intervals). It allows the user to visualize and explore the impact of both quantitative and qualitative attributes (e.g., temperature, humidity and windspeed, day type, and weather conditions) on the dependent variables (e.g., number of daily and hour users).
 
 ![Layout](/images/visOnLoadFinal.png)
 
@@ -78,7 +72,7 @@ The eight detailed charts are multiple views used to show commonalities and diff
 The overview chart uses a brush to select specific date ranges, which, along with the toggle switch UI elements, configure the filters that control which data is visible in the 8 detailed charts. The brush and toggle switches operating together implement the linked navigation idiom.
 
 ## Design Tradeoffs
-Given the tasks, encoding and design idioms used, the visualization is intended to be used with a relatively large display (i.e., desktop or laptop). Given the intended use (exploratory data analysis), no attempt was made to optimize the user experience for mobile device users at this time.
+Given the intended use (exploratory data analysis), tasks, encoding and design idioms used, the visualization is best viewed on a relatively large display (i.e., desktop or laptop).  No attempt was made to optimize the user experience for mobile device users at this time.
 
 # The Visualization
 ## Layout
@@ -106,11 +100,12 @@ The final version of the visualization, shown below, follows the same basic layo
 
 
 ## Radial Time Series - Users vs Time of Day
-The radial time series plot shows the number of users by time of day, with users encoding as the radial distance from the center of the plot, and time encoding as the angle. Color is used  distinguish between the type of users (green = registered, blue = casual).
+The radial time series plot shows the number of users by time of day, with users encoding as the radial distance from the center of the plot, and time encoding as the angle. Color is used  distinguish between the type of users (red = registered, orange = casual).
 
 
 ### Prototype
 The prototype plot was revised after the prototype layout was completed, with the addition of time and user axis tick marks and tick text.
+
 <img width="564" alt="radial time series with tick marks and x labels" src="https://user-images.githubusercontent.com/13242061/32497330-38f7b74e-c39a-11e7-94a1-2abb27847634.png">
 
 
