@@ -1,7 +1,7 @@
 # Visualization of Multivariate Time Series Data
 Live Version (hosted on Github Pages):https://sajudson.github.io/dataviz-project/
 
-Video: PENDING
+Video: https://youtu.be/Gy9j5WDFPiI
 
 This is an exploratory visualization for multivariate time series data, using bike share system data as an example. It is intended to assist in determining which factors influence the  dependent variables (e.g., the number and type of users of the system) at different time scales (e.g., daily and hourly intervals). It allows the user to visualize and explore the impact of both quantitative and qualitative attributes (e.g., temperature, humidity and windspeed, day type, and weather conditions) on the dependent variables (e.g., number of daily and hour users).
 

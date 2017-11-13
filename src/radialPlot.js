@@ -46,8 +46,8 @@ export default function (div, props) {
   const rScaleMax = innerHeight/2
   const rMax = 1000
 
-  console.log("radial chart w x h" + width+' x ' +height)
-  console.log("radial chart inner w x h" + innerWidth+' x ' +innerHeight)
+  // console.log("radial chart w x h" + width+' x ' +height)
+  // console.log("radial chart inner w x h" + innerWidth+' x ' +innerHeight)
 
   //console.log(`radial plot iH/iW/rSM/rM${innerWidth}, ${innerHeight},${rScaleMax},${rMax}`)
 
